@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:music_player/UI/Home/home_screen.dart';
 import 'package:music_player/UI/Musics/music_list_screen.dart';
+import 'package:music_player/UI/Player/player_screen.dart';
 import 'package:music_player/UI/User/user_screen.dart';
 
 class MainPage extends StatelessWidget {
   MainPage({super.key});
-  final _pages = const [HomeScreen(), MusicListScrenn(), UserScreen()];
-  final ValueNotifier<int> indexNotifier = ValueNotifier(0);
+  final _pages = [
+    const HomeScreen(),
+    PlayerScreen(),
+    const UserScreen(),
+  ];
+  final ValueNotifier<int> indexNotifier = ValueNotifier(1);
   @override
   Widget build(BuildContext context) {
     return Scaffold(

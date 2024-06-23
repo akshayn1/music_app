@@ -64,6 +64,8 @@ flutter:
     - Assets/Icons/home.png
     - Assets/Icons/music.png
     - Assets/Icons/user.png
+    - Assets/Icons/fast-forward.png
+    - Assets/Icons/rewind.png
     
     
 
