@@ -8,10 +8,11 @@ class MainPage extends StatelessWidget {
   MainPage({super.key});
   final _pages = [
     const HomeScreen(),
+    const MusicListScreen(),
     PlayerScreen(),
     const UserScreen(),
   ];
-  final ValueNotifier<int> indexNotifier = ValueNotifier(1);
+  final ValueNotifier<int> indexNotifier = ValueNotifier(3);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,6 +25,7 @@ class MainPage extends StatelessWidget {
         valueListenable: indexNotifier,
         builder: (context, newIndex, child) {
           return BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
               backgroundColor: Colors.black,
               currentIndex: newIndex,
               unselectedItemColor: Colors.white,
@@ -44,6 +46,9 @@ class MainPage extends StatelessWidget {
                   ),
                   label: '',
                 ),
+                BottomNavigationBarItem(
+                    icon: ImageIcon(AssetImage('Assets/Icons/vinyl.png')),
+                    label: ''),
                 BottomNavigationBarItem(
                   tooltip: 'User',
                   icon: ImageIcon(AssetImage('Assets/Icons/user.png')),

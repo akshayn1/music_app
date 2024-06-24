@@ -22,6 +22,7 @@ class PlayerScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
@@ -35,9 +36,6 @@ class PlayerScreen extends StatelessWidget {
                 image: NetworkImage(
                     "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/love-music-cd-music-cover-template-design-a8f2a1af7de0479ae4344113a4750136_screen.jpg?ts=1572382443"),
               ),
-            ),
-            const SizedBox(
-              height: 20,
             ),
             const Text(
               "Love Music with Hearts",
@@ -80,9 +78,6 @@ class PlayerScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
-            const SizedBox(
-              height: 15,
             ),
             Padding(
               padding: const EdgeInsets.only(left: 10, right: 10),
