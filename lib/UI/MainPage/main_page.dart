@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:music_player/UI/Home/home_screen.dart';
 import 'package:music_player/UI/Musics/music_list_screen.dart';
 import 'package:music_player/UI/Player/player_screen.dart';
 import 'package:music_player/UI/User/user_screen.dart';
+import 'package:music_player/backend/domain/music_service.dart';
 
 class MainPage extends StatelessWidget {
   MainPage({super.key});
@@ -12,9 +15,11 @@ class MainPage extends StatelessWidget {
     PlayerScreen(),
     const UserScreen(),
   ];
-  final ValueNotifier<int> indexNotifier = ValueNotifier(3);
+  final ValueNotifier<int> indexNotifier = ValueNotifier(0);
   @override
   Widget build(BuildContext context) {
+    log("build() => Called");
+    MusicService().checkPermission();
     return Scaffold(
       body: ValueListenableBuilder(
           valueListenable: indexNotifier,

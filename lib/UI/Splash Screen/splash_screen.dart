@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_player/UI/MainPage/main_page.dart';
+import 'package:music_player/backend/application/music_list/music_list_bloc.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -49,10 +51,14 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> goto() async {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<MusicListBloc>(context)
+          .add(const MusicListEvent.started());
+    });
     await Future.delayed(const Duration(seconds: 3));
     if (context.mounted) {
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: ((context) => MainPage())));
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: ((context) => MainPage())));
     }
   }
 }

@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:marquee/marquee.dart';
 
 class MusicTile extends StatelessWidget {
-  const MusicTile({super.key});
+  const MusicTile({super.key, required this.title, this.author = 'Artist'});
+
+  final String title;
+  final String? author;
 
   @override
   Widget build(BuildContext context) {
@@ -25,27 +29,34 @@ class MusicTile extends StatelessWidget {
                   ),
                 ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "I Like You",
-                    style: TextStyle(
-                        fontSize: 23,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700),
-                  ),
-                  Text(
-                    "Author",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey[400],
+              const SizedBox(
+                width: 20,
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      overflow: TextOverflow.ellipsis,
+                      title,
+                      style: const TextStyle(
+                          fontSize: 19,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700),
                     ),
-                  ),
-                ],
+                    Text(
+                      overflow: TextOverflow.ellipsis,
+                      author.toString(),
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey[400],
+                      ),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(
-                width: 50,
+                width: 30,
               ),
               Row(
                 children: [

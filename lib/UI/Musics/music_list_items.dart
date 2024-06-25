@@ -1,5 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_player/UI/Musics/widgets/music_tile.dart';
+import 'package:music_player/backend/application/music_list/music_list_bloc.dart';
 
 class MusicListItems extends StatelessWidget {
   const MusicListItems({super.key});
@@ -17,11 +21,29 @@ class MusicListItems extends StatelessWidget {
             style: TextStyle(
                 color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
           ),
-          ListView(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            children: List.generate(7, (index) => const MusicTile()),
-          )
+          BlocBuilder<MusicListBloc, MusicListState>(builder: (context, state) {
+            log(state.musicList.length.toString());
+            return state.musicList.isEmpty
+                ? const Center(
+                    child: Text(
+                      "No Music is Founded",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  )
+                : ListView(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: List.generate(
+                        state.musicList.length,
+                        (index) => MusicTile(
+                              title: state.musicList[index].displayNameWOExt,
+                              author: state.musicList[index].artist,
+                            )),
+                  );
+          })
         ],
       ),
     );
