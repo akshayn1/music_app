@@ -20,35 +20,8 @@ class MusicListScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Column(
-            children: [
-              Container(
-                height: 60,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(17),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20),
-                  child: Center(
-                    child: TextField(
-                      style: const TextStyle(fontSize: 20),
-                      decoration: InputDecoration(
-                          hintText: 'Search...',
-                          border: InputBorder.none,
-                          icon: const Icon(CupertinoIcons.search),
-                          iconColor: Colors.grey[600]),
-                    ),
-                  ),
-                ),
-              ),
-              const MusicListItems()
-            ],
-          ),
-        ),
+      body: const SafeArea(
+        child: Padding(padding: EdgeInsets.all(12.0), child: MusicListItems()),
       ),
     );
   }

@@ -1,12 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
+import 'package:music_player/UI/core/constants.dart';
+import 'package:on_audio_query/on_audio_query.dart';
 
 class MusicTile extends StatelessWidget {
-  const MusicTile({super.key, required this.title, this.author = 'Artist'});
+  const MusicTile(
+      {super.key,
+      required this.title,
+      this.author = 'Artist',
+      required this.id});
 
   final String title;
   final String? author;
+  final int id;
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +29,15 @@ class MusicTile extends StatelessWidget {
                 clipBehavior: Clip.hardEdge,
                 decoration:
                     BoxDecoration(borderRadius: BorderRadius.circular(10)),
-                child: const Image(
-                  height: 70,
-                  image: NetworkImage(
-                    "https://indiater.com/wp-content/uploads/2021/06/Free-Music-Album-Cover-Art-Banner-Photoshop-Template.jpg",
+                child: Center(
+                  child: QueryArtworkWidget(
+                    id: id,
+                    type: ArtworkType.AUDIO,
+                    nullArtworkWidget: const Image(
+                      height: 70,
+                      image: AssetImage("Assets/Images/music_art.png"),
+                      color: Color.fromARGB(255, 210, 134, 223),
+                    ),
                   ),
                 ),
               ),
@@ -34,6 +46,7 @@ class MusicTile extends StatelessWidget {
               ),
               Expanded(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(

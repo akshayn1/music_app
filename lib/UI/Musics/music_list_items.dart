@@ -10,42 +10,33 @@ class MusicListItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView(
-        children: [
-          const SizedBox(
-            height: 35,
-          ),
-          const Text(
-            "Tracks",
-            style: TextStyle(
-                color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
-          ),
-          BlocBuilder<MusicListBloc, MusicListState>(builder: (context, state) {
-            log(state.musicList.length.toString());
-            return state.musicList.isEmpty
-                ? const Center(
-                    child: Text(
-                      "No Music is Founded",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600),
-                    ),
-                  )
-                : ListView(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    children: List.generate(
-                        state.musicList.length,
-                        (index) => MusicTile(
-                              title: state.musicList[index].displayNameWOExt,
-                              author: state.musicList[index].artist,
-                            )),
-                  );
-          })
-        ],
-      ),
-    );
+    return BlocBuilder<MusicListBloc, MusicListState>(
+        builder: (context, state) {
+      log(state.musicList.length.toString());
+      return state.musicList.isEmpty
+          ? const Center(
+              child: Text(
+                "No Music is Founded",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600),
+              ),
+            )
+          : ListView.separated(
+              itemBuilder: (context, index) {
+                log(state.musicList[index].id.toString());
+                return MusicTile(
+                  id: state.musicList[index].id,
+                  title: state.musicList[index].displayNameWOExt,
+                  author: state.musicList[index].artist,
+                );
+              },
+              separatorBuilder: (context, index) => Divider(
+                    color: Colors.grey[700],
+                    thickness: 0.5,
+                  ),
+              itemCount: state.musicList.length);
+    });
   }
 }

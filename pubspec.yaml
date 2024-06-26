@@ -60,6 +60,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - Assets/Images/music app logo (ios).png
+    - Assets/Images/music_art.png
     - Assets/Icons/home.png
     - Assets/Icons/music.png
     - Assets/Icons/user.png

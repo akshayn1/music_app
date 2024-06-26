@@ -20,11 +20,18 @@ class MusicService {
 
   Future<Either<MainFailure, List<SongModel>>> queryMusics() async {
     try {
-      final List<SongModel> songDetails = await audioQuery.querySongs(
+      final List<SongModel> results = await audioQuery.querySongs(
           ignoreCase: true,
           orderType: OrderType.ASC_OR_SMALLER,
           sortType: null,
           uriType: UriType.EXTERNAL);
+
+      final List<SongModel> songDetails = results
+          .where((element) =>
+              element.duration! > 60000 &&
+              element.fileExtension == 'mp3' &&
+              element.size > 900000)
+          .toList();
 
       return Right(songDetails);
     } catch (e) {
