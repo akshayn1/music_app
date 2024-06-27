@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_player/UI/Splash%20Screen/splash_screen.dart';
 import 'package:music_player/backend/application/music_list/music_list_bloc.dart';
+import 'package:music_player/backend/application/player/player_bloc.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized;
@@ -18,6 +19,9 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) => MusicListBloc(),
+          ),
+          BlocProvider(
+            create: (context) => PlayerBloc(),
           ),
         ],
         child: MaterialApp(

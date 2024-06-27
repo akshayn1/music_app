@@ -1,7 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:marquee/marquee.dart';
-import 'package:music_player/UI/core/constants.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:music_player/backend/application/player/player_bloc.dart';
+import 'package:music_player/backend/domain/player_service.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class MusicTile extends StatelessWidget {
@@ -9,11 +13,15 @@ class MusicTile extends StatelessWidget {
       {super.key,
       required this.title,
       this.author = 'Artist',
-      required this.id});
+      required this.id,
+      required this.index,
+      required this.uri});
 
   final String title;
   final String? author;
   final int id;
+  final int index;
+  final String? uri;
 
   @override
   Widget build(BuildContext context) {
@@ -81,14 +89,44 @@ class MusicTile extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      CupertinoIcons.play,
-                      size: 35,
-                      color: Colors.white,
-                    ),
-                  )
+                  BlocBuilder<PlayerBloc, PlayerState>(
+                      builder: (context, state) {
+                    return IconButton(
+                      onPressed: () {
+                        log("${state.index.toString()},${index.toString()}");
+                        if (state.index == index) {
+                          if (state.isPlaying == true) {
+                            BlocProvider.of<PlayerBloc>(context)
+                                .add(const StopSong());
+                          } else {
+                            BlocProvider.of<PlayerBloc>(context)
+                                .add(Started(uri: uri, index: index));
+                          }
+                        } else {
+                          if (state.isPlaying == true) {
+                            BlocProvider.of<PlayerBloc>(context)
+                                .add(const StopSong());
+                            BlocProvider.of<PlayerBloc>(context)
+                                .add(Started(uri: uri, index: index));
+                          } else {
+                            BlocProvider.of<PlayerBloc>(context)
+                                .add(Started(uri: uri, index: index));
+                          }
+                        }
+                      },
+                      icon: state.index == index && state.isPlaying
+                          ? const Icon(
+                              CupertinoIcons.pause,
+                              size: 35,
+                              color: Colors.white,
+                            )
+                          : const Icon(
+                              CupertinoIcons.play,
+                              size: 35,
+                              color: Colors.white,
+                            ),
+                    );
+                  })
                 ],
               )
             ],

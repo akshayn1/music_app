@@ -12,6 +12,7 @@ class MusicListItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MusicListBloc, MusicListState>(
         builder: (context, state) {
+      log(state.musicList[2].uri.toString());
       log(state.musicList.length.toString());
       return state.musicList.isEmpty
           ? const Center(
@@ -25,11 +26,12 @@ class MusicListItems extends StatelessWidget {
             )
           : ListView.separated(
               itemBuilder: (context, index) {
-                log(state.musicList[index].id.toString());
                 return MusicTile(
                   id: state.musicList[index].id,
                   title: state.musicList[index].displayNameWOExt,
                   author: state.musicList[index].artist,
+                  index: index,
+                  uri: state.musicList[index].uri,
                 );
               },
               separatorBuilder: (context, index) => Divider(

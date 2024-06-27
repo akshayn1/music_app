@@ -8,12 +8,9 @@ class MusicService {
   final audioQuery = OnAudioQuery();
 
   checkPermission() async {
-    log("checkPermission() => Called");
     final PermissionStatus perm = await Permission.audio.request();
     if (perm.isGranted) {
-      log("Permission Granted");
     } else {
-      log("Permission denied");
       openAppSettings();
     }
   }
