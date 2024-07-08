@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_player/UI/Musics/widgets/music_tile.dart';
@@ -12,8 +10,6 @@ class MusicListItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MusicListBloc, MusicListState>(
         builder: (context, state) {
-      log(state.musicList[2].uri.toString());
-      log(state.musicList.length.toString());
       return state.musicList.isEmpty
           ? const Center(
               child: Text(
@@ -32,6 +28,7 @@ class MusicListItems extends StatelessWidget {
                   author: state.musicList[index].artist,
                   index: index,
                   uri: state.musicList[index].uri,
+                  musicList: state.musicList,
                 );
               },
               separatorBuilder: (context, index) => Divider(

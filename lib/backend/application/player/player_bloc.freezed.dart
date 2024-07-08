@@ -18,45 +18,72 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PlayerEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? uri, int index) started,
-    required TResult Function() stopSong,
+    required TResult Function(String? uri, int index, List<SongModel> musicList)
+        started,
     required TResult Function() pauseSong,
+    required TResult Function() stopSong,
+    required TResult Function() resumeSong,
+    required TResult Function(double position, String position2,
+            double duration, String duration2)
+        songSlider,
+    required TResult Function(double duration) seekSong,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? uri, int index)? started,
-    TResult? Function()? stopSong,
+    TResult? Function(String? uri, int index, List<SongModel> musicList)?
+        started,
     TResult? Function()? pauseSong,
+    TResult? Function()? stopSong,
+    TResult? Function()? resumeSong,
+    TResult? Function(double position, String position2, double duration,
+            String duration2)?
+        songSlider,
+    TResult? Function(double duration)? seekSong,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? uri, int index)? started,
-    TResult Function()? stopSong,
+    TResult Function(String? uri, int index, List<SongModel> musicList)?
+        started,
     TResult Function()? pauseSong,
+    TResult Function()? stopSong,
+    TResult Function()? resumeSong,
+    TResult Function(double position, String position2, double duration,
+            String duration2)?
+        songSlider,
+    TResult Function(double duration)? seekSong,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Started value) started,
-    required TResult Function(StopSong value) stopSong,
     required TResult Function(PauseSong value) pauseSong,
+    required TResult Function(StopSong value) stopSong,
+    required TResult Function(ResumeSong value) resumeSong,
+    required TResult Function(SongSlider value) songSlider,
+    required TResult Function(SeekSong value) seekSong,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Started value)? started,
-    TResult? Function(StopSong value)? stopSong,
     TResult? Function(PauseSong value)? pauseSong,
+    TResult? Function(StopSong value)? stopSong,
+    TResult? Function(ResumeSong value)? resumeSong,
+    TResult? Function(SongSlider value)? songSlider,
+    TResult? Function(SeekSong value)? seekSong,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Started value)? started,
-    TResult Function(StopSong value)? stopSong,
     TResult Function(PauseSong value)? pauseSong,
+    TResult Function(StopSong value)? stopSong,
+    TResult Function(ResumeSong value)? resumeSong,
+    TResult Function(SongSlider value)? songSlider,
+    TResult Function(SeekSong value)? seekSong,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -86,7 +113,7 @@ abstract class _$$StartedImplCopyWith<$Res> {
           _$StartedImpl value, $Res Function(_$StartedImpl) then) =
       __$$StartedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? uri, int index});
+  $Res call({String? uri, int index, List<SongModel> musicList});
 }
 
 /// @nodoc
@@ -102,6 +129,7 @@ class __$$StartedImplCopyWithImpl<$Res>
   $Res call({
     Object? uri = freezed,
     Object? index = null,
+    Object? musicList = null,
   }) {
     return _then(_$StartedImpl(
       uri: freezed == uri
@@ -112,6 +140,10 @@ class __$$StartedImplCopyWithImpl<$Res>
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
+      musicList: null == musicList
+          ? _value._musicList
+          : musicList // ignore: cast_nullable_to_non_nullable
+              as List<SongModel>,
     ));
   }
 }
@@ -119,16 +151,27 @@ class __$$StartedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$StartedImpl with DiagnosticableTreeMixin implements Started {
-  const _$StartedImpl({required this.uri, required this.index});
+  const _$StartedImpl(
+      {required this.uri,
+      required this.index,
+      required final List<SongModel> musicList})
+      : _musicList = musicList;
 
   @override
   final String? uri;
   @override
   final int index;
+  final List<SongModel> _musicList;
+  @override
+  List<SongModel> get musicList {
+    if (_musicList is EqualUnmodifiableListView) return _musicList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_musicList);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PlayerEvent.started(uri: $uri, index: $index)';
+    return 'PlayerEvent.started(uri: $uri, index: $index, musicList: $musicList)';
   }
 
   @override
@@ -137,7 +180,8 @@ class _$StartedImpl with DiagnosticableTreeMixin implements Started {
     properties
       ..add(DiagnosticsProperty('type', 'PlayerEvent.started'))
       ..add(DiagnosticsProperty('uri', uri))
-      ..add(DiagnosticsProperty('index', index));
+      ..add(DiagnosticsProperty('index', index))
+      ..add(DiagnosticsProperty('musicList', musicList));
   }
 
   @override
@@ -146,11 +190,14 @@ class _$StartedImpl with DiagnosticableTreeMixin implements Started {
         (other.runtimeType == runtimeType &&
             other is _$StartedImpl &&
             (identical(other.uri, uri) || other.uri == uri) &&
-            (identical(other.index, index) || other.index == index));
+            (identical(other.index, index) || other.index == index) &&
+            const DeepCollectionEquality()
+                .equals(other._musicList, _musicList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, uri, index);
+  int get hashCode => Object.hash(
+      runtimeType, uri, index, const DeepCollectionEquality().hash(_musicList));
 
   @JsonKey(ignore: true)
   @override
@@ -161,33 +208,51 @@ class _$StartedImpl with DiagnosticableTreeMixin implements Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? uri, int index) started,
-    required TResult Function() stopSong,
+    required TResult Function(String? uri, int index, List<SongModel> musicList)
+        started,
     required TResult Function() pauseSong,
+    required TResult Function() stopSong,
+    required TResult Function() resumeSong,
+    required TResult Function(double position, String position2,
+            double duration, String duration2)
+        songSlider,
+    required TResult Function(double duration) seekSong,
   }) {
-    return started(uri, index);
+    return started(uri, index, musicList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? uri, int index)? started,
-    TResult? Function()? stopSong,
+    TResult? Function(String? uri, int index, List<SongModel> musicList)?
+        started,
     TResult? Function()? pauseSong,
+    TResult? Function()? stopSong,
+    TResult? Function()? resumeSong,
+    TResult? Function(double position, String position2, double duration,
+            String duration2)?
+        songSlider,
+    TResult? Function(double duration)? seekSong,
   }) {
-    return started?.call(uri, index);
+    return started?.call(uri, index, musicList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? uri, int index)? started,
-    TResult Function()? stopSong,
+    TResult Function(String? uri, int index, List<SongModel> musicList)?
+        started,
     TResult Function()? pauseSong,
+    TResult Function()? stopSong,
+    TResult Function()? resumeSong,
+    TResult Function(double position, String position2, double duration,
+            String duration2)?
+        songSlider,
+    TResult Function(double duration)? seekSong,
     required TResult orElse(),
   }) {
     if (started != null) {
-      return started(uri, index);
+      return started(uri, index, musicList);
     }
     return orElse();
   }
@@ -196,8 +261,11 @@ class _$StartedImpl with DiagnosticableTreeMixin implements Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Started value) started,
-    required TResult Function(StopSong value) stopSong,
     required TResult Function(PauseSong value) pauseSong,
+    required TResult Function(StopSong value) stopSong,
+    required TResult Function(ResumeSong value) resumeSong,
+    required TResult Function(SongSlider value) songSlider,
+    required TResult Function(SeekSong value) seekSong,
   }) {
     return started(this);
   }
@@ -206,8 +274,11 @@ class _$StartedImpl with DiagnosticableTreeMixin implements Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Started value)? started,
-    TResult? Function(StopSong value)? stopSong,
     TResult? Function(PauseSong value)? pauseSong,
+    TResult? Function(StopSong value)? stopSong,
+    TResult? Function(ResumeSong value)? resumeSong,
+    TResult? Function(SongSlider value)? songSlider,
+    TResult? Function(SeekSong value)? seekSong,
   }) {
     return started?.call(this);
   }
@@ -216,8 +287,11 @@ class _$StartedImpl with DiagnosticableTreeMixin implements Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Started value)? started,
-    TResult Function(StopSong value)? stopSong,
     TResult Function(PauseSong value)? pauseSong,
+    TResult Function(StopSong value)? stopSong,
+    TResult Function(ResumeSong value)? resumeSong,
+    TResult Function(SongSlider value)? songSlider,
+    TResult Function(SeekSong value)? seekSong,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -229,127 +303,16 @@ class _$StartedImpl with DiagnosticableTreeMixin implements Started {
 
 abstract class Started implements PlayerEvent {
   const factory Started(
-      {required final String? uri, required final int index}) = _$StartedImpl;
+      {required final String? uri,
+      required final int index,
+      required final List<SongModel> musicList}) = _$StartedImpl;
 
   String? get uri;
   int get index;
+  List<SongModel> get musicList;
   @JsonKey(ignore: true)
   _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$StopSongImplCopyWith<$Res> {
-  factory _$$StopSongImplCopyWith(
-          _$StopSongImpl value, $Res Function(_$StopSongImpl) then) =
-      __$$StopSongImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StopSongImplCopyWithImpl<$Res>
-    extends _$PlayerEventCopyWithImpl<$Res, _$StopSongImpl>
-    implements _$$StopSongImplCopyWith<$Res> {
-  __$$StopSongImplCopyWithImpl(
-      _$StopSongImpl _value, $Res Function(_$StopSongImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$StopSongImpl with DiagnosticableTreeMixin implements StopSong {
-  const _$StopSongImpl();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PlayerEvent.stopSong()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'PlayerEvent.stopSong'));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StopSongImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String? uri, int index) started,
-    required TResult Function() stopSong,
-    required TResult Function() pauseSong,
-  }) {
-    return stopSong();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? uri, int index)? started,
-    TResult? Function()? stopSong,
-    TResult? Function()? pauseSong,
-  }) {
-    return stopSong?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? uri, int index)? started,
-    TResult Function()? stopSong,
-    TResult Function()? pauseSong,
-    required TResult orElse(),
-  }) {
-    if (stopSong != null) {
-      return stopSong();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Started value) started,
-    required TResult Function(StopSong value) stopSong,
-    required TResult Function(PauseSong value) pauseSong,
-  }) {
-    return stopSong(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Started value)? started,
-    TResult? Function(StopSong value)? stopSong,
-    TResult? Function(PauseSong value)? pauseSong,
-  }) {
-    return stopSong?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Started value)? started,
-    TResult Function(StopSong value)? stopSong,
-    TResult Function(PauseSong value)? pauseSong,
-    required TResult orElse(),
-  }) {
-    if (stopSong != null) {
-      return stopSong(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class StopSong implements PlayerEvent {
-  const factory StopSong() = _$StopSongImpl;
 }
 
 /// @nodoc
@@ -396,9 +359,15 @@ class _$PauseSongImpl with DiagnosticableTreeMixin implements PauseSong {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? uri, int index) started,
-    required TResult Function() stopSong,
+    required TResult Function(String? uri, int index, List<SongModel> musicList)
+        started,
     required TResult Function() pauseSong,
+    required TResult Function() stopSong,
+    required TResult Function() resumeSong,
+    required TResult Function(double position, String position2,
+            double duration, String duration2)
+        songSlider,
+    required TResult Function(double duration) seekSong,
   }) {
     return pauseSong();
   }
@@ -406,9 +375,15 @@ class _$PauseSongImpl with DiagnosticableTreeMixin implements PauseSong {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? uri, int index)? started,
-    TResult? Function()? stopSong,
+    TResult? Function(String? uri, int index, List<SongModel> musicList)?
+        started,
     TResult? Function()? pauseSong,
+    TResult? Function()? stopSong,
+    TResult? Function()? resumeSong,
+    TResult? Function(double position, String position2, double duration,
+            String duration2)?
+        songSlider,
+    TResult? Function(double duration)? seekSong,
   }) {
     return pauseSong?.call();
   }
@@ -416,9 +391,15 @@ class _$PauseSongImpl with DiagnosticableTreeMixin implements PauseSong {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? uri, int index)? started,
-    TResult Function()? stopSong,
+    TResult Function(String? uri, int index, List<SongModel> musicList)?
+        started,
     TResult Function()? pauseSong,
+    TResult Function()? stopSong,
+    TResult Function()? resumeSong,
+    TResult Function(double position, String position2, double duration,
+            String duration2)?
+        songSlider,
+    TResult Function(double duration)? seekSong,
     required TResult orElse(),
   }) {
     if (pauseSong != null) {
@@ -431,8 +412,11 @@ class _$PauseSongImpl with DiagnosticableTreeMixin implements PauseSong {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Started value) started,
-    required TResult Function(StopSong value) stopSong,
     required TResult Function(PauseSong value) pauseSong,
+    required TResult Function(StopSong value) stopSong,
+    required TResult Function(ResumeSong value) resumeSong,
+    required TResult Function(SongSlider value) songSlider,
+    required TResult Function(SeekSong value) seekSong,
   }) {
     return pauseSong(this);
   }
@@ -441,8 +425,11 @@ class _$PauseSongImpl with DiagnosticableTreeMixin implements PauseSong {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Started value)? started,
-    TResult? Function(StopSong value)? stopSong,
     TResult? Function(PauseSong value)? pauseSong,
+    TResult? Function(StopSong value)? stopSong,
+    TResult? Function(ResumeSong value)? resumeSong,
+    TResult? Function(SongSlider value)? songSlider,
+    TResult? Function(SeekSong value)? seekSong,
   }) {
     return pauseSong?.call(this);
   }
@@ -451,8 +438,11 @@ class _$PauseSongImpl with DiagnosticableTreeMixin implements PauseSong {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Started value)? started,
-    TResult Function(StopSong value)? stopSong,
     TResult Function(PauseSong value)? pauseSong,
+    TResult Function(StopSong value)? stopSong,
+    TResult Function(ResumeSong value)? resumeSong,
+    TResult Function(SongSlider value)? songSlider,
+    TResult Function(SeekSong value)? seekSong,
     required TResult orElse(),
   }) {
     if (pauseSong != null) {
@@ -467,9 +457,690 @@ abstract class PauseSong implements PlayerEvent {
 }
 
 /// @nodoc
+abstract class _$$StopSongImplCopyWith<$Res> {
+  factory _$$StopSongImplCopyWith(
+          _$StopSongImpl value, $Res Function(_$StopSongImpl) then) =
+      __$$StopSongImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$StopSongImplCopyWithImpl<$Res>
+    extends _$PlayerEventCopyWithImpl<$Res, _$StopSongImpl>
+    implements _$$StopSongImplCopyWith<$Res> {
+  __$$StopSongImplCopyWithImpl(
+      _$StopSongImpl _value, $Res Function(_$StopSongImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$StopSongImpl with DiagnosticableTreeMixin implements StopSong {
+  const _$StopSongImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PlayerEvent.stopSong()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'PlayerEvent.stopSong'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$StopSongImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? uri, int index, List<SongModel> musicList)
+        started,
+    required TResult Function() pauseSong,
+    required TResult Function() stopSong,
+    required TResult Function() resumeSong,
+    required TResult Function(double position, String position2,
+            double duration, String duration2)
+        songSlider,
+    required TResult Function(double duration) seekSong,
+  }) {
+    return stopSong();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? uri, int index, List<SongModel> musicList)?
+        started,
+    TResult? Function()? pauseSong,
+    TResult? Function()? stopSong,
+    TResult? Function()? resumeSong,
+    TResult? Function(double position, String position2, double duration,
+            String duration2)?
+        songSlider,
+    TResult? Function(double duration)? seekSong,
+  }) {
+    return stopSong?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? uri, int index, List<SongModel> musicList)?
+        started,
+    TResult Function()? pauseSong,
+    TResult Function()? stopSong,
+    TResult Function()? resumeSong,
+    TResult Function(double position, String position2, double duration,
+            String duration2)?
+        songSlider,
+    TResult Function(double duration)? seekSong,
+    required TResult orElse(),
+  }) {
+    if (stopSong != null) {
+      return stopSong();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(PauseSong value) pauseSong,
+    required TResult Function(StopSong value) stopSong,
+    required TResult Function(ResumeSong value) resumeSong,
+    required TResult Function(SongSlider value) songSlider,
+    required TResult Function(SeekSong value) seekSong,
+  }) {
+    return stopSong(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Started value)? started,
+    TResult? Function(PauseSong value)? pauseSong,
+    TResult? Function(StopSong value)? stopSong,
+    TResult? Function(ResumeSong value)? resumeSong,
+    TResult? Function(SongSlider value)? songSlider,
+    TResult? Function(SeekSong value)? seekSong,
+  }) {
+    return stopSong?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(PauseSong value)? pauseSong,
+    TResult Function(StopSong value)? stopSong,
+    TResult Function(ResumeSong value)? resumeSong,
+    TResult Function(SongSlider value)? songSlider,
+    TResult Function(SeekSong value)? seekSong,
+    required TResult orElse(),
+  }) {
+    if (stopSong != null) {
+      return stopSong(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class StopSong implements PlayerEvent {
+  const factory StopSong() = _$StopSongImpl;
+}
+
+/// @nodoc
+abstract class _$$ResumeSongImplCopyWith<$Res> {
+  factory _$$ResumeSongImplCopyWith(
+          _$ResumeSongImpl value, $Res Function(_$ResumeSongImpl) then) =
+      __$$ResumeSongImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ResumeSongImplCopyWithImpl<$Res>
+    extends _$PlayerEventCopyWithImpl<$Res, _$ResumeSongImpl>
+    implements _$$ResumeSongImplCopyWith<$Res> {
+  __$$ResumeSongImplCopyWithImpl(
+      _$ResumeSongImpl _value, $Res Function(_$ResumeSongImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ResumeSongImpl with DiagnosticableTreeMixin implements ResumeSong {
+  const _$ResumeSongImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PlayerEvent.resumeSong()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'PlayerEvent.resumeSong'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ResumeSongImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? uri, int index, List<SongModel> musicList)
+        started,
+    required TResult Function() pauseSong,
+    required TResult Function() stopSong,
+    required TResult Function() resumeSong,
+    required TResult Function(double position, String position2,
+            double duration, String duration2)
+        songSlider,
+    required TResult Function(double duration) seekSong,
+  }) {
+    return resumeSong();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? uri, int index, List<SongModel> musicList)?
+        started,
+    TResult? Function()? pauseSong,
+    TResult? Function()? stopSong,
+    TResult? Function()? resumeSong,
+    TResult? Function(double position, String position2, double duration,
+            String duration2)?
+        songSlider,
+    TResult? Function(double duration)? seekSong,
+  }) {
+    return resumeSong?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? uri, int index, List<SongModel> musicList)?
+        started,
+    TResult Function()? pauseSong,
+    TResult Function()? stopSong,
+    TResult Function()? resumeSong,
+    TResult Function(double position, String position2, double duration,
+            String duration2)?
+        songSlider,
+    TResult Function(double duration)? seekSong,
+    required TResult orElse(),
+  }) {
+    if (resumeSong != null) {
+      return resumeSong();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(PauseSong value) pauseSong,
+    required TResult Function(StopSong value) stopSong,
+    required TResult Function(ResumeSong value) resumeSong,
+    required TResult Function(SongSlider value) songSlider,
+    required TResult Function(SeekSong value) seekSong,
+  }) {
+    return resumeSong(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Started value)? started,
+    TResult? Function(PauseSong value)? pauseSong,
+    TResult? Function(StopSong value)? stopSong,
+    TResult? Function(ResumeSong value)? resumeSong,
+    TResult? Function(SongSlider value)? songSlider,
+    TResult? Function(SeekSong value)? seekSong,
+  }) {
+    return resumeSong?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(PauseSong value)? pauseSong,
+    TResult Function(StopSong value)? stopSong,
+    TResult Function(ResumeSong value)? resumeSong,
+    TResult Function(SongSlider value)? songSlider,
+    TResult Function(SeekSong value)? seekSong,
+    required TResult orElse(),
+  }) {
+    if (resumeSong != null) {
+      return resumeSong(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ResumeSong implements PlayerEvent {
+  const factory ResumeSong() = _$ResumeSongImpl;
+}
+
+/// @nodoc
+abstract class _$$SongSliderImplCopyWith<$Res> {
+  factory _$$SongSliderImplCopyWith(
+          _$SongSliderImpl value, $Res Function(_$SongSliderImpl) then) =
+      __$$SongSliderImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {double position, String position2, double duration, String duration2});
+}
+
+/// @nodoc
+class __$$SongSliderImplCopyWithImpl<$Res>
+    extends _$PlayerEventCopyWithImpl<$Res, _$SongSliderImpl>
+    implements _$$SongSliderImplCopyWith<$Res> {
+  __$$SongSliderImplCopyWithImpl(
+      _$SongSliderImpl _value, $Res Function(_$SongSliderImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? position = null,
+    Object? position2 = null,
+    Object? duration = null,
+    Object? duration2 = null,
+  }) {
+    return _then(_$SongSliderImpl(
+      position: null == position
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as double,
+      position2: null == position2
+          ? _value.position2
+          : position2 // ignore: cast_nullable_to_non_nullable
+              as String,
+      duration: null == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as double,
+      duration2: null == duration2
+          ? _value.duration2
+          : duration2 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SongSliderImpl with DiagnosticableTreeMixin implements SongSlider {
+  const _$SongSliderImpl(
+      {required this.position,
+      required this.position2,
+      required this.duration,
+      required this.duration2});
+
+  @override
+  final double position;
+  @override
+  final String position2;
+  @override
+  final double duration;
+  @override
+  final String duration2;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PlayerEvent.songSlider(position: $position, position2: $position2, duration: $duration, duration2: $duration2)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'PlayerEvent.songSlider'))
+      ..add(DiagnosticsProperty('position', position))
+      ..add(DiagnosticsProperty('position2', position2))
+      ..add(DiagnosticsProperty('duration', duration))
+      ..add(DiagnosticsProperty('duration2', duration2));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SongSliderImpl &&
+            (identical(other.position, position) ||
+                other.position == position) &&
+            (identical(other.position2, position2) ||
+                other.position2 == position2) &&
+            (identical(other.duration, duration) ||
+                other.duration == duration) &&
+            (identical(other.duration2, duration2) ||
+                other.duration2 == duration2));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, position, position2, duration, duration2);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SongSliderImplCopyWith<_$SongSliderImpl> get copyWith =>
+      __$$SongSliderImplCopyWithImpl<_$SongSliderImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? uri, int index, List<SongModel> musicList)
+        started,
+    required TResult Function() pauseSong,
+    required TResult Function() stopSong,
+    required TResult Function() resumeSong,
+    required TResult Function(double position, String position2,
+            double duration, String duration2)
+        songSlider,
+    required TResult Function(double duration) seekSong,
+  }) {
+    return songSlider(position, position2, duration, duration2);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? uri, int index, List<SongModel> musicList)?
+        started,
+    TResult? Function()? pauseSong,
+    TResult? Function()? stopSong,
+    TResult? Function()? resumeSong,
+    TResult? Function(double position, String position2, double duration,
+            String duration2)?
+        songSlider,
+    TResult? Function(double duration)? seekSong,
+  }) {
+    return songSlider?.call(position, position2, duration, duration2);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? uri, int index, List<SongModel> musicList)?
+        started,
+    TResult Function()? pauseSong,
+    TResult Function()? stopSong,
+    TResult Function()? resumeSong,
+    TResult Function(double position, String position2, double duration,
+            String duration2)?
+        songSlider,
+    TResult Function(double duration)? seekSong,
+    required TResult orElse(),
+  }) {
+    if (songSlider != null) {
+      return songSlider(position, position2, duration, duration2);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(PauseSong value) pauseSong,
+    required TResult Function(StopSong value) stopSong,
+    required TResult Function(ResumeSong value) resumeSong,
+    required TResult Function(SongSlider value) songSlider,
+    required TResult Function(SeekSong value) seekSong,
+  }) {
+    return songSlider(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Started value)? started,
+    TResult? Function(PauseSong value)? pauseSong,
+    TResult? Function(StopSong value)? stopSong,
+    TResult? Function(ResumeSong value)? resumeSong,
+    TResult? Function(SongSlider value)? songSlider,
+    TResult? Function(SeekSong value)? seekSong,
+  }) {
+    return songSlider?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(PauseSong value)? pauseSong,
+    TResult Function(StopSong value)? stopSong,
+    TResult Function(ResumeSong value)? resumeSong,
+    TResult Function(SongSlider value)? songSlider,
+    TResult Function(SeekSong value)? seekSong,
+    required TResult orElse(),
+  }) {
+    if (songSlider != null) {
+      return songSlider(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SongSlider implements PlayerEvent {
+  const factory SongSlider(
+      {required final double position,
+      required final String position2,
+      required final double duration,
+      required final String duration2}) = _$SongSliderImpl;
+
+  double get position;
+  String get position2;
+  double get duration;
+  String get duration2;
+  @JsonKey(ignore: true)
+  _$$SongSliderImplCopyWith<_$SongSliderImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SeekSongImplCopyWith<$Res> {
+  factory _$$SeekSongImplCopyWith(
+          _$SeekSongImpl value, $Res Function(_$SeekSongImpl) then) =
+      __$$SeekSongImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({double duration});
+}
+
+/// @nodoc
+class __$$SeekSongImplCopyWithImpl<$Res>
+    extends _$PlayerEventCopyWithImpl<$Res, _$SeekSongImpl>
+    implements _$$SeekSongImplCopyWith<$Res> {
+  __$$SeekSongImplCopyWithImpl(
+      _$SeekSongImpl _value, $Res Function(_$SeekSongImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? duration = null,
+  }) {
+    return _then(_$SeekSongImpl(
+      duration: null == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SeekSongImpl with DiagnosticableTreeMixin implements SeekSong {
+  const _$SeekSongImpl({required this.duration});
+
+  @override
+  final double duration;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PlayerEvent.seekSong(duration: $duration)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'PlayerEvent.seekSong'))
+      ..add(DiagnosticsProperty('duration', duration));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SeekSongImpl &&
+            (identical(other.duration, duration) ||
+                other.duration == duration));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, duration);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SeekSongImplCopyWith<_$SeekSongImpl> get copyWith =>
+      __$$SeekSongImplCopyWithImpl<_$SeekSongImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? uri, int index, List<SongModel> musicList)
+        started,
+    required TResult Function() pauseSong,
+    required TResult Function() stopSong,
+    required TResult Function() resumeSong,
+    required TResult Function(double position, String position2,
+            double duration, String duration2)
+        songSlider,
+    required TResult Function(double duration) seekSong,
+  }) {
+    return seekSong(duration);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? uri, int index, List<SongModel> musicList)?
+        started,
+    TResult? Function()? pauseSong,
+    TResult? Function()? stopSong,
+    TResult? Function()? resumeSong,
+    TResult? Function(double position, String position2, double duration,
+            String duration2)?
+        songSlider,
+    TResult? Function(double duration)? seekSong,
+  }) {
+    return seekSong?.call(duration);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? uri, int index, List<SongModel> musicList)?
+        started,
+    TResult Function()? pauseSong,
+    TResult Function()? stopSong,
+    TResult Function()? resumeSong,
+    TResult Function(double position, String position2, double duration,
+            String duration2)?
+        songSlider,
+    TResult Function(double duration)? seekSong,
+    required TResult orElse(),
+  }) {
+    if (seekSong != null) {
+      return seekSong(duration);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(PauseSong value) pauseSong,
+    required TResult Function(StopSong value) stopSong,
+    required TResult Function(ResumeSong value) resumeSong,
+    required TResult Function(SongSlider value) songSlider,
+    required TResult Function(SeekSong value) seekSong,
+  }) {
+    return seekSong(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Started value)? started,
+    TResult? Function(PauseSong value)? pauseSong,
+    TResult? Function(StopSong value)? stopSong,
+    TResult? Function(ResumeSong value)? resumeSong,
+    TResult? Function(SongSlider value)? songSlider,
+    TResult? Function(SeekSong value)? seekSong,
+  }) {
+    return seekSong?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(PauseSong value)? pauseSong,
+    TResult Function(StopSong value)? stopSong,
+    TResult Function(ResumeSong value)? resumeSong,
+    TResult Function(SongSlider value)? songSlider,
+    TResult Function(SeekSong value)? seekSong,
+    required TResult orElse(),
+  }) {
+    if (seekSong != null) {
+      return seekSong(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SeekSong implements PlayerEvent {
+  const factory SeekSong({required final double duration}) = _$SeekSongImpl;
+
+  double get duration;
+  @JsonKey(ignore: true)
+  _$$SeekSongImplCopyWith<_$SeekSongImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$PlayerState {
   int get index => throw _privateConstructorUsedError;
   bool get isPlaying => throw _privateConstructorUsedError;
+  bool get isFirstSong => throw _privateConstructorUsedError;
+  String get duration => throw _privateConstructorUsedError;
+  double get max => throw _privateConstructorUsedError;
+  double get value => throw _privateConstructorUsedError;
+  String get position => throw _privateConstructorUsedError;
+  List<SongModel> get musicList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PlayerStateCopyWith<PlayerState> get copyWith =>
@@ -482,7 +1153,15 @@ abstract class $PlayerStateCopyWith<$Res> {
           PlayerState value, $Res Function(PlayerState) then) =
       _$PlayerStateCopyWithImpl<$Res, PlayerState>;
   @useResult
-  $Res call({int index, bool isPlaying});
+  $Res call(
+      {int index,
+      bool isPlaying,
+      bool isFirstSong,
+      String duration,
+      double max,
+      double value,
+      String position,
+      List<SongModel> musicList});
 }
 
 /// @nodoc
@@ -500,6 +1179,12 @@ class _$PlayerStateCopyWithImpl<$Res, $Val extends PlayerState>
   $Res call({
     Object? index = null,
     Object? isPlaying = null,
+    Object? isFirstSong = null,
+    Object? duration = null,
+    Object? max = null,
+    Object? value = null,
+    Object? position = null,
+    Object? musicList = null,
   }) {
     return _then(_value.copyWith(
       index: null == index
@@ -510,6 +1195,30 @@ class _$PlayerStateCopyWithImpl<$Res, $Val extends PlayerState>
           ? _value.isPlaying
           : isPlaying // ignore: cast_nullable_to_non_nullable
               as bool,
+      isFirstSong: null == isFirstSong
+          ? _value.isFirstSong
+          : isFirstSong // ignore: cast_nullable_to_non_nullable
+              as bool,
+      duration: null == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as String,
+      max: null == max
+          ? _value.max
+          : max // ignore: cast_nullable_to_non_nullable
+              as double,
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as double,
+      position: null == position
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as String,
+      musicList: null == musicList
+          ? _value.musicList
+          : musicList // ignore: cast_nullable_to_non_nullable
+              as List<SongModel>,
     ) as $Val);
   }
 }
@@ -522,7 +1231,15 @@ abstract class _$$PlayerStateImplCopyWith<$Res>
       __$$PlayerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int index, bool isPlaying});
+  $Res call(
+      {int index,
+      bool isPlaying,
+      bool isFirstSong,
+      String duration,
+      double max,
+      double value,
+      String position,
+      List<SongModel> musicList});
 }
 
 /// @nodoc
@@ -538,6 +1255,12 @@ class __$$PlayerStateImplCopyWithImpl<$Res>
   $Res call({
     Object? index = null,
     Object? isPlaying = null,
+    Object? isFirstSong = null,
+    Object? duration = null,
+    Object? max = null,
+    Object? value = null,
+    Object? position = null,
+    Object? musicList = null,
   }) {
     return _then(_$PlayerStateImpl(
       index: null == index
@@ -548,6 +1271,30 @@ class __$$PlayerStateImplCopyWithImpl<$Res>
           ? _value.isPlaying
           : isPlaying // ignore: cast_nullable_to_non_nullable
               as bool,
+      isFirstSong: null == isFirstSong
+          ? _value.isFirstSong
+          : isFirstSong // ignore: cast_nullable_to_non_nullable
+              as bool,
+      duration: null == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as String,
+      max: null == max
+          ? _value.max
+          : max // ignore: cast_nullable_to_non_nullable
+              as double,
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as double,
+      position: null == position
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as String,
+      musicList: null == musicList
+          ? _value._musicList
+          : musicList // ignore: cast_nullable_to_non_nullable
+              as List<SongModel>,
     ));
   }
 }
@@ -555,16 +1302,42 @@ class __$$PlayerStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PlayerStateImpl with DiagnosticableTreeMixin implements _PlayerState {
-  const _$PlayerStateImpl({required this.index, required this.isPlaying});
+  const _$PlayerStateImpl(
+      {required this.index,
+      required this.isPlaying,
+      required this.isFirstSong,
+      required this.duration,
+      required this.max,
+      required this.value,
+      required this.position,
+      required final List<SongModel> musicList})
+      : _musicList = musicList;
 
   @override
   final int index;
   @override
   final bool isPlaying;
+  @override
+  final bool isFirstSong;
+  @override
+  final String duration;
+  @override
+  final double max;
+  @override
+  final double value;
+  @override
+  final String position;
+  final List<SongModel> _musicList;
+  @override
+  List<SongModel> get musicList {
+    if (_musicList is EqualUnmodifiableListView) return _musicList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_musicList);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PlayerState(index: $index, isPlaying: $isPlaying)';
+    return 'PlayerState(index: $index, isPlaying: $isPlaying, isFirstSong: $isFirstSong, duration: $duration, max: $max, value: $value, position: $position, musicList: $musicList)';
   }
 
   @override
@@ -573,7 +1346,13 @@ class _$PlayerStateImpl with DiagnosticableTreeMixin implements _PlayerState {
     properties
       ..add(DiagnosticsProperty('type', 'PlayerState'))
       ..add(DiagnosticsProperty('index', index))
-      ..add(DiagnosticsProperty('isPlaying', isPlaying));
+      ..add(DiagnosticsProperty('isPlaying', isPlaying))
+      ..add(DiagnosticsProperty('isFirstSong', isFirstSong))
+      ..add(DiagnosticsProperty('duration', duration))
+      ..add(DiagnosticsProperty('max', max))
+      ..add(DiagnosticsProperty('value', value))
+      ..add(DiagnosticsProperty('position', position))
+      ..add(DiagnosticsProperty('musicList', musicList));
   }
 
   @override
@@ -583,11 +1362,30 @@ class _$PlayerStateImpl with DiagnosticableTreeMixin implements _PlayerState {
             other is _$PlayerStateImpl &&
             (identical(other.index, index) || other.index == index) &&
             (identical(other.isPlaying, isPlaying) ||
-                other.isPlaying == isPlaying));
+                other.isPlaying == isPlaying) &&
+            (identical(other.isFirstSong, isFirstSong) ||
+                other.isFirstSong == isFirstSong) &&
+            (identical(other.duration, duration) ||
+                other.duration == duration) &&
+            (identical(other.max, max) || other.max == max) &&
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.position, position) ||
+                other.position == position) &&
+            const DeepCollectionEquality()
+                .equals(other._musicList, _musicList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, index, isPlaying);
+  int get hashCode => Object.hash(
+      runtimeType,
+      index,
+      isPlaying,
+      isFirstSong,
+      duration,
+      max,
+      value,
+      position,
+      const DeepCollectionEquality().hash(_musicList));
 
   @JsonKey(ignore: true)
   @override
@@ -599,12 +1397,30 @@ class _$PlayerStateImpl with DiagnosticableTreeMixin implements _PlayerState {
 abstract class _PlayerState implements PlayerState {
   const factory _PlayerState(
       {required final int index,
-      required final bool isPlaying}) = _$PlayerStateImpl;
+      required final bool isPlaying,
+      required final bool isFirstSong,
+      required final String duration,
+      required final double max,
+      required final double value,
+      required final String position,
+      required final List<SongModel> musicList}) = _$PlayerStateImpl;
 
   @override
   int get index;
   @override
   bool get isPlaying;
+  @override
+  bool get isFirstSong;
+  @override
+  String get duration;
+  @override
+  double get max;
+  @override
+  double get value;
+  @override
+  String get position;
+  @override
+  List<SongModel> get musicList;
   @override
   @JsonKey(ignore: true)
   _$$PlayerStateImplCopyWith<_$PlayerStateImpl> get copyWith =>

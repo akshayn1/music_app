@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:music_player/backend/application/player/player_bloc.dart';
-import 'package:music_player/backend/domain/player_service.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class MusicTile extends StatelessWidget {
@@ -15,16 +14,19 @@ class MusicTile extends StatelessWidget {
       this.author = 'Artist',
       required this.id,
       required this.index,
-      required this.uri});
+      required this.uri,
+      required this.musicList});
 
   final String title;
   final String? author;
   final int id;
   final int index;
   final String? uri;
+  final List<SongModel> musicList;
 
   @override
   Widget build(BuildContext context) {
+    final ValueNotifier<bool> isStarted = ValueNotifier(false);
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10),
       child: SizedBox(
@@ -93,24 +95,33 @@ class MusicTile extends StatelessWidget {
                       builder: (context, state) {
                     return IconButton(
                       onPressed: () {
-                        log("${state.index.toString()},${index.toString()}");
                         if (state.index == index) {
                           if (state.isPlaying == true) {
                             BlocProvider.of<PlayerBloc>(context)
-                                .add(const StopSong());
+                                .add(const PauseSong());
                           } else {
-                            BlocProvider.of<PlayerBloc>(context)
-                                .add(Started(uri: uri, index: index));
+                            if (state.isFirstSong) {
+                              BlocProvider.of<PlayerBloc>(context)
+                                  .add(const ResumeSong());
+                              log("Called => Resume");
+                            } else {
+                              log("Called => New");
+                              BlocProvider.of<PlayerBloc>(context).add(Started(
+                                  uri: uri,
+                                  index: index,
+                                  musicList: musicList));
+                              isStarted.value = true;
+                            }
                           }
                         } else {
                           if (state.isPlaying == true) {
                             BlocProvider.of<PlayerBloc>(context)
                                 .add(const StopSong());
-                            BlocProvider.of<PlayerBloc>(context)
-                                .add(Started(uri: uri, index: index));
+                            BlocProvider.of<PlayerBloc>(context).add(Started(
+                                uri: uri, index: index, musicList: musicList));
                           } else {
-                            BlocProvider.of<PlayerBloc>(context)
-                                .add(Started(uri: uri, index: index));
+                            BlocProvider.of<PlayerBloc>(context).add(Started(
+                                uri: uri, index: index, musicList: musicList));
                           }
                         }
                       },

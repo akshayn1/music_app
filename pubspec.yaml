@@ -61,6 +61,7 @@ flutter:
   assets:
     - Assets/Images/music app logo (ios).png
     - Assets/Images/music_art.png
+    - Assets/Images/music_disk.png
     - Assets/Icons/home.png
     - Assets/Icons/music.png
     - Assets/Icons/user.png
