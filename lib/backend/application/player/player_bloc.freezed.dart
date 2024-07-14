@@ -1134,6 +1134,7 @@ abstract class SeekSong implements PlayerEvent {
 /// @nodoc
 mixin _$PlayerState {
   int get index => throw _privateConstructorUsedError;
+  bool get onceArt => throw _privateConstructorUsedError;
   bool get isPlaying => throw _privateConstructorUsedError;
   bool get isFirstSong => throw _privateConstructorUsedError;
   String get duration => throw _privateConstructorUsedError;
@@ -1155,6 +1156,7 @@ abstract class $PlayerStateCopyWith<$Res> {
   @useResult
   $Res call(
       {int index,
+      bool onceArt,
       bool isPlaying,
       bool isFirstSong,
       String duration,
@@ -1178,6 +1180,7 @@ class _$PlayerStateCopyWithImpl<$Res, $Val extends PlayerState>
   @override
   $Res call({
     Object? index = null,
+    Object? onceArt = null,
     Object? isPlaying = null,
     Object? isFirstSong = null,
     Object? duration = null,
@@ -1191,6 +1194,10 @@ class _$PlayerStateCopyWithImpl<$Res, $Val extends PlayerState>
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
+      onceArt: null == onceArt
+          ? _value.onceArt
+          : onceArt // ignore: cast_nullable_to_non_nullable
+              as bool,
       isPlaying: null == isPlaying
           ? _value.isPlaying
           : isPlaying // ignore: cast_nullable_to_non_nullable
@@ -1233,6 +1240,7 @@ abstract class _$$PlayerStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {int index,
+      bool onceArt,
       bool isPlaying,
       bool isFirstSong,
       String duration,
@@ -1254,6 +1262,7 @@ class __$$PlayerStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? index = null,
+    Object? onceArt = null,
     Object? isPlaying = null,
     Object? isFirstSong = null,
     Object? duration = null,
@@ -1267,6 +1276,10 @@ class __$$PlayerStateImplCopyWithImpl<$Res>
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
+      onceArt: null == onceArt
+          ? _value.onceArt
+          : onceArt // ignore: cast_nullable_to_non_nullable
+              as bool,
       isPlaying: null == isPlaying
           ? _value.isPlaying
           : isPlaying // ignore: cast_nullable_to_non_nullable
@@ -1304,6 +1317,7 @@ class __$$PlayerStateImplCopyWithImpl<$Res>
 class _$PlayerStateImpl with DiagnosticableTreeMixin implements _PlayerState {
   const _$PlayerStateImpl(
       {required this.index,
+      required this.onceArt,
       required this.isPlaying,
       required this.isFirstSong,
       required this.duration,
@@ -1315,6 +1329,8 @@ class _$PlayerStateImpl with DiagnosticableTreeMixin implements _PlayerState {
 
   @override
   final int index;
+  @override
+  final bool onceArt;
   @override
   final bool isPlaying;
   @override
@@ -1337,7 +1353,7 @@ class _$PlayerStateImpl with DiagnosticableTreeMixin implements _PlayerState {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PlayerState(index: $index, isPlaying: $isPlaying, isFirstSong: $isFirstSong, duration: $duration, max: $max, value: $value, position: $position, musicList: $musicList)';
+    return 'PlayerState(index: $index, onceArt: $onceArt, isPlaying: $isPlaying, isFirstSong: $isFirstSong, duration: $duration, max: $max, value: $value, position: $position, musicList: $musicList)';
   }
 
   @override
@@ -1346,6 +1362,7 @@ class _$PlayerStateImpl with DiagnosticableTreeMixin implements _PlayerState {
     properties
       ..add(DiagnosticsProperty('type', 'PlayerState'))
       ..add(DiagnosticsProperty('index', index))
+      ..add(DiagnosticsProperty('onceArt', onceArt))
       ..add(DiagnosticsProperty('isPlaying', isPlaying))
       ..add(DiagnosticsProperty('isFirstSong', isFirstSong))
       ..add(DiagnosticsProperty('duration', duration))
@@ -1361,6 +1378,7 @@ class _$PlayerStateImpl with DiagnosticableTreeMixin implements _PlayerState {
         (other.runtimeType == runtimeType &&
             other is _$PlayerStateImpl &&
             (identical(other.index, index) || other.index == index) &&
+            (identical(other.onceArt, onceArt) || other.onceArt == onceArt) &&
             (identical(other.isPlaying, isPlaying) ||
                 other.isPlaying == isPlaying) &&
             (identical(other.isFirstSong, isFirstSong) ||
@@ -1379,6 +1397,7 @@ class _$PlayerStateImpl with DiagnosticableTreeMixin implements _PlayerState {
   int get hashCode => Object.hash(
       runtimeType,
       index,
+      onceArt,
       isPlaying,
       isFirstSong,
       duration,
@@ -1397,6 +1416,7 @@ class _$PlayerStateImpl with DiagnosticableTreeMixin implements _PlayerState {
 abstract class _PlayerState implements PlayerState {
   const factory _PlayerState(
       {required final int index,
+      required final bool onceArt,
       required final bool isPlaying,
       required final bool isFirstSong,
       required final String duration,
@@ -1407,6 +1427,8 @@ abstract class _PlayerState implements PlayerState {
 
   @override
   int get index;
+  @override
+  bool get onceArt;
   @override
   bool get isPlaying;
   @override

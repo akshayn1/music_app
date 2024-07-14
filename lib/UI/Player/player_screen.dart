@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,13 +7,13 @@ import 'package:on_audio_query/on_audio_query.dart';
 
 class PlayerScreen extends StatelessWidget {
   const PlayerScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    final bool first = false;
     return BlocBuilder<PlayerBloc, PlayerState>(
       builder: (context, state) {
-        final index = state.index;
-        log(index.toString());
+        var index = state.index;
+
         return Scaffold(
           backgroundColor: Colors.black,
           appBar: AppBar(
@@ -42,7 +40,7 @@ class PlayerScreen extends StatelessWidget {
                     clipBehavior: Clip.hardEdge,
                     decoration:
                         BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                    child: state.musicList.isEmpty && first != true
+                    child: state.musicList.isEmpty
                         ? Image(
                             image: const AssetImage(
                                 "Assets/Images/music_disk.png"),
@@ -50,22 +48,24 @@ class PlayerScreen extends StatelessWidget {
                             width: 70,
                             height: 70,
                           )
-                        : QueryArtworkWidget(
-                            artworkRepeat: ImageRepeat.noRepeat,
-                            artworkQuality: FilterQuality.high,
-                            id: state.musicList[index].id,
-                            type: ArtworkType.AUDIO,
-                            artworkHeight: double.infinity,
-                            artworkWidth: double.infinity,
-                            format: ArtworkFormat.PNG,
-                            nullArtworkWidget: Image(
-                              image: const AssetImage(
-                                  "Assets/Images/music_disk.png"),
-                              color: kPrimaryColor,
-                              width: 70,
-                              height: 70,
-                            ),
-                          )),
+                        : state.onceArt != false
+                            ? QueryArtworkWidget(
+                                keepOldArtwork: true,
+                                artworkQuality: FilterQuality.medium,
+                                id: state.musicList[index].id,
+                                type: ArtworkType.AUDIO,
+                                artworkHeight: double.infinity,
+                                artworkWidth: double.infinity,
+                                format: ArtworkFormat.PNG,
+                                nullArtworkWidget: Image(
+                                  image: const AssetImage(
+                                      "Assets/Images/music_disk.png"),
+                                  color: kPrimaryColor,
+                                  width: 70,
+                                  height: 70,
+                                ),
+                              )
+                            : null),
                 Text(
                   maxLines: 1,
                   state.musicList.isEmpty

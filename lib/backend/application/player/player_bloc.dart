@@ -1,8 +1,7 @@
-import 'dart:ffi';
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:just_audio/just_audio.dart';
 
 import 'package:music_player/backend/domain/player_service.dart';
 import 'package:on_audio_query/on_audio_query.dart';
@@ -14,6 +13,13 @@ part 'player_bloc.freezed.dart';
 class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
   PlayerBloc() : super(PlayerState.initial()) {
     final playSerivce = PlayerService();
+
+    playSerivce.audioPlayer.playerStateStream.listen((state) {
+      if (state.processingState == ProcessingState.completed) {
+        add(const StopSong());
+      }
+    });
+
     playSerivce.audioPlayer.durationStream.listen(
       (duration) {
         playSerivce.audioPlayer.positionStream.listen((position) {
@@ -35,6 +41,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
           position: "0",
           max: playSerivce.max.value,
           value: 0,
+          onceArt: false,
           musicList: event.musicList,
           isFirstSong: true));
     });
@@ -57,6 +64,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
     on<SongSlider>((event, emit) {
       // log(" Slider :${event.position.toString()}");
       emit(state.copyWith(
+          onceArt: true,
           value: event.position,
           position: event.position2,
           duration: event.duration2,

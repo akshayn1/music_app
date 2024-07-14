@@ -4,6 +4,7 @@ part of 'player_bloc.dart';
 class PlayerState with _$PlayerState {
   const factory PlayerState({
     required int index,
+    required bool onceArt,
     required bool isPlaying,
     required bool isFirstSong,
     required String duration,
@@ -20,6 +21,7 @@ class PlayerState with _$PlayerState {
         value: 0,
         index: 0,
         isPlaying: false,
+        onceArt: false,
         musicList: [],
         isFirstSong: false,
       );
