@@ -1,9 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music_player/UI/core/constants.dart';
+import 'package:on_audio_query/on_audio_query.dart';
 
 class FavTiles extends StatelessWidget {
-  const FavTiles({super.key});
+  const FavTiles(
+      {super.key,
+      required this.id,
+      required this.title,
+      required this.authour});
+  final int id;
+  final String title;
+  final String authour;
 
   @override
   Widget build(BuildContext context) {
@@ -12,21 +20,26 @@ class FavTiles extends StatelessWidget {
       child: SizedBox(
         height: 80,
         child: ListTile(
-          leading: const CircleAvatar(
-            backgroundImage: NetworkImage(
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjcD43_9EiMENsyxpxMHo3Y39r44k62RaGTA&s"),
-            radius: 30,
+          leading: QueryArtworkWidget(
+            id: id,
+            type: ArtworkType.AUDIO,
+            nullArtworkWidget: const Image(
+              height: 70,
+              image: AssetImage("Assets/Images/music_art.png"),
+              color: Color.fromARGB(255, 210, 134, 223),
+            ),
           ),
           title: Text(
-            "Favorites",
+            overflow: TextOverflow.ellipsis,
+            title,
             style: TextStyle(
                 color: kPrimaryColor,
                 fontSize: 19,
                 fontWeight: FontWeight.w600),
           ),
-          subtitle: const Text(
-            "the creu",
-            style: TextStyle(color: Colors.white),
+          subtitle: Text(
+            authour,
+            style: const TextStyle(color: Colors.white),
           ),
           trailing: IconButton(
               onPressed: () {},

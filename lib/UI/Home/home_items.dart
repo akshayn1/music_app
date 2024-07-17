@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_player/UI/Home/widgets/fav_tiles.dart';
 import 'package:music_player/UI/Home/widgets/playlist_card.dart';
 import 'package:music_player/UI/core/constants.dart';
+import 'package:music_player/backend/application/favourites/favourites_bloc.dart';
 
 class HomeItems extends StatelessWidget {
   const HomeItems({super.key});
 
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<FavouritesBloc>(context).add(const Initilize());
     return Expanded(
       child: ListView(
         children: [
@@ -33,10 +36,32 @@ class HomeItems extends StatelessWidget {
                 fontSize: 19,
                 fontWeight: FontWeight.w600),
           ),
-          ListView(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            children: List.generate(8, (index) => FavTiles()),
+          BlocBuilder<FavouritesBloc, FavouritesState>(
+            builder: (context, state) {
+              if (state.favList.isEmpty) {
+                return const Center(
+                  child: Text(
+                    "Your favourite songs will appear here",
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: Color.fromARGB(255, 109, 107, 107)),
+                  ),
+                );
+              } else {
+                return ListView(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: List.generate(
+                    state.favList.length,
+                    (index) => FavTiles(
+                      id: state.favList[index].id,
+                      title: state.favList[index].title,
+                      authour: state.favList[index].authour,
+                    ),
+                  ),
+                );
+              }
+            },
           )
         ],
       ),

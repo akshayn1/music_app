@@ -1,8 +1,13 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_player/UI/core/constants.dart';
+import 'package:music_player/backend/application/favourites/favourites_bloc.dart';
 import 'package:music_player/backend/application/player/player_bloc.dart';
+import 'package:music_player/backend/models/fav_model.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class PlayerScreen extends StatelessWidget {
@@ -13,7 +18,7 @@ class PlayerScreen extends StatelessWidget {
     return BlocBuilder<PlayerBloc, PlayerState>(
       builder: (context, state) {
         var index = state.index;
-
+        log('build => PlayerScreen');
         return Scaffold(
           backgroundColor: Colors.black,
           appBar: AppBar(
@@ -118,18 +123,70 @@ class PlayerScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
+                      BlocBuilder<FavouritesBloc, FavouritesState>(
+                        builder: (context, state2) {
+                          try {
+                            for (var ele in state2.favList) {
+                              log(" FavList Music ID : ${ele.id}\n");
+                              if (ele.id == state.musicList[index].id) {
+                                log(zone: Zone.current, "Found");
+                                log(" Founded Music ID : ${ele.id}\n");
+                                BlocProvider.of<FavouritesBloc>(context)
+                                    .add(const RefreshUI(equal: true));
+                                break;
+                              } else {
+                                log("Not Found");
+                                BlocProvider.of<FavouritesBloc>(context)
+                                    .add(const RefreshUI(equal: false));
+                              }
+                            }
+                          } catch (e) {
+                            BlocProvider.of<FavouritesBloc>(context)
+                                .add(const RefreshUI(equal: false));
+                            log("Empty List");
+                          }
+
+                          return IconButton(
+                            onPressed: () {
+                              final favMusic = FavSongs(
+                                id: state.musicList[index].id,
+                                title: state.musicList[index].title,
+                                authour: state.musicList[index].artist!,
+                                uri: state.musicList[index].uri!,
+                              );
+
+                              if (state2.equal) {
+                                log("Off");
+                                BlocProvider.of<FavouritesBloc>(context)
+                                    .add(const RefreshUI(equal: false));
+                                BlocProvider.of<FavouritesBloc>(context).add(
+                                    DeleteFavs(id: state.musicList[index].id));
+                              } else {
+                                log('On');
+                                BlocProvider.of<FavouritesBloc>(context)
+                                    .add(const RefreshUI(equal: true));
+                                BlocProvider.of<FavouritesBloc>(context)
+                                    .add(AddFavs(favList: favMusic));
+                              }
+                            },
+                            style: const ButtonStyle(
+                                backgroundColor: WidgetStatePropertyAll(
+                                    Color.fromARGB(255, 31, 31, 31))),
+                            icon: state2.equal
+                                ? const Icon(
+                                    CupertinoIcons.heart_fill,
+                                    color: Colors.red,
+                                  )
+                                : const Icon(
+                                    CupertinoIcons.heart,
+                                    color: Colors.white,
+                                  ),
+                          );
+                        },
+                      ),
                       IconButton(
-                          onPressed: () {},
                           style: const ButtonStyle(
-                              backgroundColor: MaterialStatePropertyAll(
-                                  Color.fromARGB(255, 31, 31, 31))),
-                          icon: const Icon(
-                            CupertinoIcons.heart,
-                            color: Colors.white,
-                          )),
-                      IconButton(
-                          style: const ButtonStyle(
-                              backgroundColor: MaterialStatePropertyAll(
+                              backgroundColor: WidgetStatePropertyAll(
                                   Color.fromARGB(255, 31, 31, 31))),
                           onPressed: () {
                             BlocProvider.of<PlayerBloc>(context).add(Started(
@@ -145,7 +202,7 @@ class PlayerScreen extends StatelessWidget {
                       IconButton(
                         style: ButtonStyle(
                             backgroundColor:
-                                MaterialStatePropertyAll(kPrimaryColor)),
+                                WidgetStatePropertyAll(kPrimaryColor)),
                         onPressed: () {
                           if (state.isPlaying == true) {
                             BlocProvider.of<PlayerBloc>(context)
@@ -173,7 +230,7 @@ class PlayerScreen extends StatelessWidget {
                       ),
                       IconButton(
                           style: const ButtonStyle(
-                              backgroundColor: MaterialStatePropertyAll(
+                              backgroundColor: WidgetStatePropertyAll(
                                   Color.fromARGB(255, 31, 31, 31))),
                           onPressed: () {
                             BlocProvider.of<PlayerBloc>(context).add(Started(
@@ -188,7 +245,7 @@ class PlayerScreen extends StatelessWidget {
                           )),
                       IconButton(
                           style: const ButtonStyle(
-                              backgroundColor: MaterialStatePropertyAll(
+                              backgroundColor: WidgetStatePropertyAll(
                                   Color.fromARGB(255, 31, 31, 31))),
                           onPressed: () {},
                           icon: const Icon(

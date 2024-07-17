@@ -83,14 +83,6 @@ class MusicTile extends StatelessWidget {
               ),
               Row(
                 children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      CupertinoIcons.heart,
-                      size: 35,
-                      color: Colors.white,
-                    ),
-                  ),
                   BlocBuilder<PlayerBloc, PlayerState>(
                       builder: (context, state) {
                     return IconButton(

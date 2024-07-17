@@ -21,6 +21,7 @@ mixin _$PlayerEvent {
     required TResult Function(String? uri, int index, List<SongModel> musicList)
         started,
     required TResult Function() pauseSong,
+    required TResult Function() refreashPlayer,
     required TResult Function() stopSong,
     required TResult Function() resumeSong,
     required TResult Function(double position, String position2,
@@ -34,6 +35,7 @@ mixin _$PlayerEvent {
     TResult? Function(String? uri, int index, List<SongModel> musicList)?
         started,
     TResult? Function()? pauseSong,
+    TResult? Function()? refreashPlayer,
     TResult? Function()? stopSong,
     TResult? Function()? resumeSong,
     TResult? Function(double position, String position2, double duration,
@@ -47,6 +49,7 @@ mixin _$PlayerEvent {
     TResult Function(String? uri, int index, List<SongModel> musicList)?
         started,
     TResult Function()? pauseSong,
+    TResult Function()? refreashPlayer,
     TResult Function()? stopSong,
     TResult Function()? resumeSong,
     TResult Function(double position, String position2, double duration,
@@ -60,6 +63,7 @@ mixin _$PlayerEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(Started value) started,
     required TResult Function(PauseSong value) pauseSong,
+    required TResult Function(RefreashPlayer value) refreashPlayer,
     required TResult Function(StopSong value) stopSong,
     required TResult Function(ResumeSong value) resumeSong,
     required TResult Function(SongSlider value) songSlider,
@@ -70,6 +74,7 @@ mixin _$PlayerEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Started value)? started,
     TResult? Function(PauseSong value)? pauseSong,
+    TResult? Function(RefreashPlayer value)? refreashPlayer,
     TResult? Function(StopSong value)? stopSong,
     TResult? Function(ResumeSong value)? resumeSong,
     TResult? Function(SongSlider value)? songSlider,
@@ -80,6 +85,7 @@ mixin _$PlayerEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Started value)? started,
     TResult Function(PauseSong value)? pauseSong,
+    TResult Function(RefreashPlayer value)? refreashPlayer,
     TResult Function(StopSong value)? stopSong,
     TResult Function(ResumeSong value)? resumeSong,
     TResult Function(SongSlider value)? songSlider,
@@ -211,6 +217,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements Started {
     required TResult Function(String? uri, int index, List<SongModel> musicList)
         started,
     required TResult Function() pauseSong,
+    required TResult Function() refreashPlayer,
     required TResult Function() stopSong,
     required TResult Function() resumeSong,
     required TResult Function(double position, String position2,
@@ -227,6 +234,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements Started {
     TResult? Function(String? uri, int index, List<SongModel> musicList)?
         started,
     TResult? Function()? pauseSong,
+    TResult? Function()? refreashPlayer,
     TResult? Function()? stopSong,
     TResult? Function()? resumeSong,
     TResult? Function(double position, String position2, double duration,
@@ -243,6 +251,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements Started {
     TResult Function(String? uri, int index, List<SongModel> musicList)?
         started,
     TResult Function()? pauseSong,
+    TResult Function()? refreashPlayer,
     TResult Function()? stopSong,
     TResult Function()? resumeSong,
     TResult Function(double position, String position2, double duration,
@@ -262,6 +271,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements Started {
   TResult map<TResult extends Object?>({
     required TResult Function(Started value) started,
     required TResult Function(PauseSong value) pauseSong,
+    required TResult Function(RefreashPlayer value) refreashPlayer,
     required TResult Function(StopSong value) stopSong,
     required TResult Function(ResumeSong value) resumeSong,
     required TResult Function(SongSlider value) songSlider,
@@ -275,6 +285,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Started value)? started,
     TResult? Function(PauseSong value)? pauseSong,
+    TResult? Function(RefreashPlayer value)? refreashPlayer,
     TResult? Function(StopSong value)? stopSong,
     TResult? Function(ResumeSong value)? resumeSong,
     TResult? Function(SongSlider value)? songSlider,
@@ -288,6 +299,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Started value)? started,
     TResult Function(PauseSong value)? pauseSong,
+    TResult Function(RefreashPlayer value)? refreashPlayer,
     TResult Function(StopSong value)? stopSong,
     TResult Function(ResumeSong value)? resumeSong,
     TResult Function(SongSlider value)? songSlider,
@@ -362,6 +374,7 @@ class _$PauseSongImpl with DiagnosticableTreeMixin implements PauseSong {
     required TResult Function(String? uri, int index, List<SongModel> musicList)
         started,
     required TResult Function() pauseSong,
+    required TResult Function() refreashPlayer,
     required TResult Function() stopSong,
     required TResult Function() resumeSong,
     required TResult Function(double position, String position2,
@@ -378,6 +391,7 @@ class _$PauseSongImpl with DiagnosticableTreeMixin implements PauseSong {
     TResult? Function(String? uri, int index, List<SongModel> musicList)?
         started,
     TResult? Function()? pauseSong,
+    TResult? Function()? refreashPlayer,
     TResult? Function()? stopSong,
     TResult? Function()? resumeSong,
     TResult? Function(double position, String position2, double duration,
@@ -394,6 +408,7 @@ class _$PauseSongImpl with DiagnosticableTreeMixin implements PauseSong {
     TResult Function(String? uri, int index, List<SongModel> musicList)?
         started,
     TResult Function()? pauseSong,
+    TResult Function()? refreashPlayer,
     TResult Function()? stopSong,
     TResult Function()? resumeSong,
     TResult Function(double position, String position2, double duration,
@@ -413,6 +428,7 @@ class _$PauseSongImpl with DiagnosticableTreeMixin implements PauseSong {
   TResult map<TResult extends Object?>({
     required TResult Function(Started value) started,
     required TResult Function(PauseSong value) pauseSong,
+    required TResult Function(RefreashPlayer value) refreashPlayer,
     required TResult Function(StopSong value) stopSong,
     required TResult Function(ResumeSong value) resumeSong,
     required TResult Function(SongSlider value) songSlider,
@@ -426,6 +442,7 @@ class _$PauseSongImpl with DiagnosticableTreeMixin implements PauseSong {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Started value)? started,
     TResult? Function(PauseSong value)? pauseSong,
+    TResult? Function(RefreashPlayer value)? refreashPlayer,
     TResult? Function(StopSong value)? stopSong,
     TResult? Function(ResumeSong value)? resumeSong,
     TResult? Function(SongSlider value)? songSlider,
@@ -439,6 +456,7 @@ class _$PauseSongImpl with DiagnosticableTreeMixin implements PauseSong {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Started value)? started,
     TResult Function(PauseSong value)? pauseSong,
+    TResult Function(RefreashPlayer value)? refreashPlayer,
     TResult Function(StopSong value)? stopSong,
     TResult Function(ResumeSong value)? resumeSong,
     TResult Function(SongSlider value)? songSlider,
@@ -454,6 +472,155 @@ class _$PauseSongImpl with DiagnosticableTreeMixin implements PauseSong {
 
 abstract class PauseSong implements PlayerEvent {
   const factory PauseSong() = _$PauseSongImpl;
+}
+
+/// @nodoc
+abstract class _$$RefreashPlayerImplCopyWith<$Res> {
+  factory _$$RefreashPlayerImplCopyWith(_$RefreashPlayerImpl value,
+          $Res Function(_$RefreashPlayerImpl) then) =
+      __$$RefreashPlayerImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RefreashPlayerImplCopyWithImpl<$Res>
+    extends _$PlayerEventCopyWithImpl<$Res, _$RefreashPlayerImpl>
+    implements _$$RefreashPlayerImplCopyWith<$Res> {
+  __$$RefreashPlayerImplCopyWithImpl(
+      _$RefreashPlayerImpl _value, $Res Function(_$RefreashPlayerImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$RefreashPlayerImpl
+    with DiagnosticableTreeMixin
+    implements RefreashPlayer {
+  const _$RefreashPlayerImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PlayerEvent.refreashPlayer()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'PlayerEvent.refreashPlayer'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$RefreashPlayerImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? uri, int index, List<SongModel> musicList)
+        started,
+    required TResult Function() pauseSong,
+    required TResult Function() refreashPlayer,
+    required TResult Function() stopSong,
+    required TResult Function() resumeSong,
+    required TResult Function(double position, String position2,
+            double duration, String duration2)
+        songSlider,
+    required TResult Function(double duration) seekSong,
+  }) {
+    return refreashPlayer();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? uri, int index, List<SongModel> musicList)?
+        started,
+    TResult? Function()? pauseSong,
+    TResult? Function()? refreashPlayer,
+    TResult? Function()? stopSong,
+    TResult? Function()? resumeSong,
+    TResult? Function(double position, String position2, double duration,
+            String duration2)?
+        songSlider,
+    TResult? Function(double duration)? seekSong,
+  }) {
+    return refreashPlayer?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? uri, int index, List<SongModel> musicList)?
+        started,
+    TResult Function()? pauseSong,
+    TResult Function()? refreashPlayer,
+    TResult Function()? stopSong,
+    TResult Function()? resumeSong,
+    TResult Function(double position, String position2, double duration,
+            String duration2)?
+        songSlider,
+    TResult Function(double duration)? seekSong,
+    required TResult orElse(),
+  }) {
+    if (refreashPlayer != null) {
+      return refreashPlayer();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(PauseSong value) pauseSong,
+    required TResult Function(RefreashPlayer value) refreashPlayer,
+    required TResult Function(StopSong value) stopSong,
+    required TResult Function(ResumeSong value) resumeSong,
+    required TResult Function(SongSlider value) songSlider,
+    required TResult Function(SeekSong value) seekSong,
+  }) {
+    return refreashPlayer(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Started value)? started,
+    TResult? Function(PauseSong value)? pauseSong,
+    TResult? Function(RefreashPlayer value)? refreashPlayer,
+    TResult? Function(StopSong value)? stopSong,
+    TResult? Function(ResumeSong value)? resumeSong,
+    TResult? Function(SongSlider value)? songSlider,
+    TResult? Function(SeekSong value)? seekSong,
+  }) {
+    return refreashPlayer?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(PauseSong value)? pauseSong,
+    TResult Function(RefreashPlayer value)? refreashPlayer,
+    TResult Function(StopSong value)? stopSong,
+    TResult Function(ResumeSong value)? resumeSong,
+    TResult Function(SongSlider value)? songSlider,
+    TResult Function(SeekSong value)? seekSong,
+    required TResult orElse(),
+  }) {
+    if (refreashPlayer != null) {
+      return refreashPlayer(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RefreashPlayer implements PlayerEvent {
+  const factory RefreashPlayer() = _$RefreashPlayerImpl;
 }
 
 /// @nodoc
@@ -503,6 +670,7 @@ class _$StopSongImpl with DiagnosticableTreeMixin implements StopSong {
     required TResult Function(String? uri, int index, List<SongModel> musicList)
         started,
     required TResult Function() pauseSong,
+    required TResult Function() refreashPlayer,
     required TResult Function() stopSong,
     required TResult Function() resumeSong,
     required TResult Function(double position, String position2,
@@ -519,6 +687,7 @@ class _$StopSongImpl with DiagnosticableTreeMixin implements StopSong {
     TResult? Function(String? uri, int index, List<SongModel> musicList)?
         started,
     TResult? Function()? pauseSong,
+    TResult? Function()? refreashPlayer,
     TResult? Function()? stopSong,
     TResult? Function()? resumeSong,
     TResult? Function(double position, String position2, double duration,
@@ -535,6 +704,7 @@ class _$StopSongImpl with DiagnosticableTreeMixin implements StopSong {
     TResult Function(String? uri, int index, List<SongModel> musicList)?
         started,
     TResult Function()? pauseSong,
+    TResult Function()? refreashPlayer,
     TResult Function()? stopSong,
     TResult Function()? resumeSong,
     TResult Function(double position, String position2, double duration,
@@ -554,6 +724,7 @@ class _$StopSongImpl with DiagnosticableTreeMixin implements StopSong {
   TResult map<TResult extends Object?>({
     required TResult Function(Started value) started,
     required TResult Function(PauseSong value) pauseSong,
+    required TResult Function(RefreashPlayer value) refreashPlayer,
     required TResult Function(StopSong value) stopSong,
     required TResult Function(ResumeSong value) resumeSong,
     required TResult Function(SongSlider value) songSlider,
@@ -567,6 +738,7 @@ class _$StopSongImpl with DiagnosticableTreeMixin implements StopSong {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Started value)? started,
     TResult? Function(PauseSong value)? pauseSong,
+    TResult? Function(RefreashPlayer value)? refreashPlayer,
     TResult? Function(StopSong value)? stopSong,
     TResult? Function(ResumeSong value)? resumeSong,
     TResult? Function(SongSlider value)? songSlider,
@@ -580,6 +752,7 @@ class _$StopSongImpl with DiagnosticableTreeMixin implements StopSong {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Started value)? started,
     TResult Function(PauseSong value)? pauseSong,
+    TResult Function(RefreashPlayer value)? refreashPlayer,
     TResult Function(StopSong value)? stopSong,
     TResult Function(ResumeSong value)? resumeSong,
     TResult Function(SongSlider value)? songSlider,
@@ -644,6 +817,7 @@ class _$ResumeSongImpl with DiagnosticableTreeMixin implements ResumeSong {
     required TResult Function(String? uri, int index, List<SongModel> musicList)
         started,
     required TResult Function() pauseSong,
+    required TResult Function() refreashPlayer,
     required TResult Function() stopSong,
     required TResult Function() resumeSong,
     required TResult Function(double position, String position2,
@@ -660,6 +834,7 @@ class _$ResumeSongImpl with DiagnosticableTreeMixin implements ResumeSong {
     TResult? Function(String? uri, int index, List<SongModel> musicList)?
         started,
     TResult? Function()? pauseSong,
+    TResult? Function()? refreashPlayer,
     TResult? Function()? stopSong,
     TResult? Function()? resumeSong,
     TResult? Function(double position, String position2, double duration,
@@ -676,6 +851,7 @@ class _$ResumeSongImpl with DiagnosticableTreeMixin implements ResumeSong {
     TResult Function(String? uri, int index, List<SongModel> musicList)?
         started,
     TResult Function()? pauseSong,
+    TResult Function()? refreashPlayer,
     TResult Function()? stopSong,
     TResult Function()? resumeSong,
     TResult Function(double position, String position2, double duration,
@@ -695,6 +871,7 @@ class _$ResumeSongImpl with DiagnosticableTreeMixin implements ResumeSong {
   TResult map<TResult extends Object?>({
     required TResult Function(Started value) started,
     required TResult Function(PauseSong value) pauseSong,
+    required TResult Function(RefreashPlayer value) refreashPlayer,
     required TResult Function(StopSong value) stopSong,
     required TResult Function(ResumeSong value) resumeSong,
     required TResult Function(SongSlider value) songSlider,
@@ -708,6 +885,7 @@ class _$ResumeSongImpl with DiagnosticableTreeMixin implements ResumeSong {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Started value)? started,
     TResult? Function(PauseSong value)? pauseSong,
+    TResult? Function(RefreashPlayer value)? refreashPlayer,
     TResult? Function(StopSong value)? stopSong,
     TResult? Function(ResumeSong value)? resumeSong,
     TResult? Function(SongSlider value)? songSlider,
@@ -721,6 +899,7 @@ class _$ResumeSongImpl with DiagnosticableTreeMixin implements ResumeSong {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Started value)? started,
     TResult Function(PauseSong value)? pauseSong,
+    TResult Function(RefreashPlayer value)? refreashPlayer,
     TResult Function(StopSong value)? stopSong,
     TResult Function(ResumeSong value)? resumeSong,
     TResult Function(SongSlider value)? songSlider,
@@ -850,6 +1029,7 @@ class _$SongSliderImpl with DiagnosticableTreeMixin implements SongSlider {
     required TResult Function(String? uri, int index, List<SongModel> musicList)
         started,
     required TResult Function() pauseSong,
+    required TResult Function() refreashPlayer,
     required TResult Function() stopSong,
     required TResult Function() resumeSong,
     required TResult Function(double position, String position2,
@@ -866,6 +1046,7 @@ class _$SongSliderImpl with DiagnosticableTreeMixin implements SongSlider {
     TResult? Function(String? uri, int index, List<SongModel> musicList)?
         started,
     TResult? Function()? pauseSong,
+    TResult? Function()? refreashPlayer,
     TResult? Function()? stopSong,
     TResult? Function()? resumeSong,
     TResult? Function(double position, String position2, double duration,
@@ -882,6 +1063,7 @@ class _$SongSliderImpl with DiagnosticableTreeMixin implements SongSlider {
     TResult Function(String? uri, int index, List<SongModel> musicList)?
         started,
     TResult Function()? pauseSong,
+    TResult Function()? refreashPlayer,
     TResult Function()? stopSong,
     TResult Function()? resumeSong,
     TResult Function(double position, String position2, double duration,
@@ -901,6 +1083,7 @@ class _$SongSliderImpl with DiagnosticableTreeMixin implements SongSlider {
   TResult map<TResult extends Object?>({
     required TResult Function(Started value) started,
     required TResult Function(PauseSong value) pauseSong,
+    required TResult Function(RefreashPlayer value) refreashPlayer,
     required TResult Function(StopSong value) stopSong,
     required TResult Function(ResumeSong value) resumeSong,
     required TResult Function(SongSlider value) songSlider,
@@ -914,6 +1097,7 @@ class _$SongSliderImpl with DiagnosticableTreeMixin implements SongSlider {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Started value)? started,
     TResult? Function(PauseSong value)? pauseSong,
+    TResult? Function(RefreashPlayer value)? refreashPlayer,
     TResult? Function(StopSong value)? stopSong,
     TResult? Function(ResumeSong value)? resumeSong,
     TResult? Function(SongSlider value)? songSlider,
@@ -927,6 +1111,7 @@ class _$SongSliderImpl with DiagnosticableTreeMixin implements SongSlider {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Started value)? started,
     TResult Function(PauseSong value)? pauseSong,
+    TResult Function(RefreashPlayer value)? refreashPlayer,
     TResult Function(StopSong value)? stopSong,
     TResult Function(ResumeSong value)? resumeSong,
     TResult Function(SongSlider value)? songSlider,
@@ -1032,6 +1217,7 @@ class _$SeekSongImpl with DiagnosticableTreeMixin implements SeekSong {
     required TResult Function(String? uri, int index, List<SongModel> musicList)
         started,
     required TResult Function() pauseSong,
+    required TResult Function() refreashPlayer,
     required TResult Function() stopSong,
     required TResult Function() resumeSong,
     required TResult Function(double position, String position2,
@@ -1048,6 +1234,7 @@ class _$SeekSongImpl with DiagnosticableTreeMixin implements SeekSong {
     TResult? Function(String? uri, int index, List<SongModel> musicList)?
         started,
     TResult? Function()? pauseSong,
+    TResult? Function()? refreashPlayer,
     TResult? Function()? stopSong,
     TResult? Function()? resumeSong,
     TResult? Function(double position, String position2, double duration,
@@ -1064,6 +1251,7 @@ class _$SeekSongImpl with DiagnosticableTreeMixin implements SeekSong {
     TResult Function(String? uri, int index, List<SongModel> musicList)?
         started,
     TResult Function()? pauseSong,
+    TResult Function()? refreashPlayer,
     TResult Function()? stopSong,
     TResult Function()? resumeSong,
     TResult Function(double position, String position2, double duration,
@@ -1083,6 +1271,7 @@ class _$SeekSongImpl with DiagnosticableTreeMixin implements SeekSong {
   TResult map<TResult extends Object?>({
     required TResult Function(Started value) started,
     required TResult Function(PauseSong value) pauseSong,
+    required TResult Function(RefreashPlayer value) refreashPlayer,
     required TResult Function(StopSong value) stopSong,
     required TResult Function(ResumeSong value) resumeSong,
     required TResult Function(SongSlider value) songSlider,
@@ -1096,6 +1285,7 @@ class _$SeekSongImpl with DiagnosticableTreeMixin implements SeekSong {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Started value)? started,
     TResult? Function(PauseSong value)? pauseSong,
+    TResult? Function(RefreashPlayer value)? refreashPlayer,
     TResult? Function(StopSong value)? stopSong,
     TResult? Function(ResumeSong value)? resumeSong,
     TResult? Function(SongSlider value)? songSlider,
@@ -1109,6 +1299,7 @@ class _$SeekSongImpl with DiagnosticableTreeMixin implements SeekSong {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Started value)? started,
     TResult Function(PauseSong value)? pauseSong,
+    TResult Function(RefreashPlayer value)? refreashPlayer,
     TResult Function(StopSong value)? stopSong,
     TResult Function(ResumeSong value)? resumeSong,
     TResult Function(SongSlider value)? songSlider,

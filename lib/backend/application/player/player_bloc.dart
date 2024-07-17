@@ -70,6 +70,9 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
           duration: event.duration2,
           max: event.duration));
     });
+    on<RefreashPlayer>(
+      (event, emit) => emit(state.copyWith()),
+    );
   }
 
   String formatDuration(Duration duration) {

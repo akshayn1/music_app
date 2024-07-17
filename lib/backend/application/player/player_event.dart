@@ -9,6 +9,7 @@ class PlayerEvent with _$PlayerEvent {
   }) = Started;
 
   const factory PlayerEvent.pauseSong() = PauseSong;
+  const factory PlayerEvent.refreashPlayer() = RefreashPlayer;
   const factory PlayerEvent.stopSong() = StopSong;
   const factory PlayerEvent.resumeSong() = ResumeSong;
   const factory PlayerEvent.songSlider(
