@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:music_player/backend/application/player/player_bloc.dart';
+import 'package:music_player/backend/models/player/player_model.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class MusicTile extends StatelessWidget {
@@ -22,7 +23,7 @@ class MusicTile extends StatelessWidget {
   final int id;
   final int index;
   final String? uri;
-  final List<SongModel> musicList;
+  final List<PlayerModel> musicList;
 
   @override
   Widget build(BuildContext context) {

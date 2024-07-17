@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PlayerEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? uri, int index, List<SongModel> musicList)
+    required TResult Function(
+            String? uri, int index, List<PlayerModel> musicList)
         started,
     required TResult Function() pauseSong,
     required TResult Function() refreashPlayer,
@@ -32,7 +33,7 @@ mixin _$PlayerEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? uri, int index, List<SongModel> musicList)?
+    TResult? Function(String? uri, int index, List<PlayerModel> musicList)?
         started,
     TResult? Function()? pauseSong,
     TResult? Function()? refreashPlayer,
@@ -46,7 +47,7 @@ mixin _$PlayerEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? uri, int index, List<SongModel> musicList)?
+    TResult Function(String? uri, int index, List<PlayerModel> musicList)?
         started,
     TResult Function()? pauseSong,
     TResult Function()? refreashPlayer,
@@ -119,7 +120,7 @@ abstract class _$$StartedImplCopyWith<$Res> {
           _$StartedImpl value, $Res Function(_$StartedImpl) then) =
       __$$StartedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? uri, int index, List<SongModel> musicList});
+  $Res call({String? uri, int index, List<PlayerModel> musicList});
 }
 
 /// @nodoc
@@ -149,7 +150,7 @@ class __$$StartedImplCopyWithImpl<$Res>
       musicList: null == musicList
           ? _value._musicList
           : musicList // ignore: cast_nullable_to_non_nullable
-              as List<SongModel>,
+              as List<PlayerModel>,
     ));
   }
 }
@@ -160,16 +161,16 @@ class _$StartedImpl with DiagnosticableTreeMixin implements Started {
   const _$StartedImpl(
       {required this.uri,
       required this.index,
-      required final List<SongModel> musicList})
+      required final List<PlayerModel> musicList})
       : _musicList = musicList;
 
   @override
   final String? uri;
   @override
   final int index;
-  final List<SongModel> _musicList;
+  final List<PlayerModel> _musicList;
   @override
-  List<SongModel> get musicList {
+  List<PlayerModel> get musicList {
     if (_musicList is EqualUnmodifiableListView) return _musicList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_musicList);
@@ -214,7 +215,8 @@ class _$StartedImpl with DiagnosticableTreeMixin implements Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? uri, int index, List<SongModel> musicList)
+    required TResult Function(
+            String? uri, int index, List<PlayerModel> musicList)
         started,
     required TResult Function() pauseSong,
     required TResult Function() refreashPlayer,
@@ -231,7 +233,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements Started {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? uri, int index, List<SongModel> musicList)?
+    TResult? Function(String? uri, int index, List<PlayerModel> musicList)?
         started,
     TResult? Function()? pauseSong,
     TResult? Function()? refreashPlayer,
@@ -248,7 +250,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements Started {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? uri, int index, List<SongModel> musicList)?
+    TResult Function(String? uri, int index, List<PlayerModel> musicList)?
         started,
     TResult Function()? pauseSong,
     TResult Function()? refreashPlayer,
@@ -317,11 +319,11 @@ abstract class Started implements PlayerEvent {
   const factory Started(
       {required final String? uri,
       required final int index,
-      required final List<SongModel> musicList}) = _$StartedImpl;
+      required final List<PlayerModel> musicList}) = _$StartedImpl;
 
   String? get uri;
   int get index;
-  List<SongModel> get musicList;
+  List<PlayerModel> get musicList;
   @JsonKey(ignore: true)
   _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -371,7 +373,8 @@ class _$PauseSongImpl with DiagnosticableTreeMixin implements PauseSong {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? uri, int index, List<SongModel> musicList)
+    required TResult Function(
+            String? uri, int index, List<PlayerModel> musicList)
         started,
     required TResult Function() pauseSong,
     required TResult Function() refreashPlayer,
@@ -388,7 +391,7 @@ class _$PauseSongImpl with DiagnosticableTreeMixin implements PauseSong {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? uri, int index, List<SongModel> musicList)?
+    TResult? Function(String? uri, int index, List<PlayerModel> musicList)?
         started,
     TResult? Function()? pauseSong,
     TResult? Function()? refreashPlayer,
@@ -405,7 +408,7 @@ class _$PauseSongImpl with DiagnosticableTreeMixin implements PauseSong {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? uri, int index, List<SongModel> musicList)?
+    TResult Function(String? uri, int index, List<PlayerModel> musicList)?
         started,
     TResult Function()? pauseSong,
     TResult Function()? refreashPlayer,
@@ -520,7 +523,8 @@ class _$RefreashPlayerImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? uri, int index, List<SongModel> musicList)
+    required TResult Function(
+            String? uri, int index, List<PlayerModel> musicList)
         started,
     required TResult Function() pauseSong,
     required TResult Function() refreashPlayer,
@@ -537,7 +541,7 @@ class _$RefreashPlayerImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? uri, int index, List<SongModel> musicList)?
+    TResult? Function(String? uri, int index, List<PlayerModel> musicList)?
         started,
     TResult? Function()? pauseSong,
     TResult? Function()? refreashPlayer,
@@ -554,7 +558,7 @@ class _$RefreashPlayerImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? uri, int index, List<SongModel> musicList)?
+    TResult Function(String? uri, int index, List<PlayerModel> musicList)?
         started,
     TResult Function()? pauseSong,
     TResult Function()? refreashPlayer,
@@ -667,7 +671,8 @@ class _$StopSongImpl with DiagnosticableTreeMixin implements StopSong {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? uri, int index, List<SongModel> musicList)
+    required TResult Function(
+            String? uri, int index, List<PlayerModel> musicList)
         started,
     required TResult Function() pauseSong,
     required TResult Function() refreashPlayer,
@@ -684,7 +689,7 @@ class _$StopSongImpl with DiagnosticableTreeMixin implements StopSong {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? uri, int index, List<SongModel> musicList)?
+    TResult? Function(String? uri, int index, List<PlayerModel> musicList)?
         started,
     TResult? Function()? pauseSong,
     TResult? Function()? refreashPlayer,
@@ -701,7 +706,7 @@ class _$StopSongImpl with DiagnosticableTreeMixin implements StopSong {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? uri, int index, List<SongModel> musicList)?
+    TResult Function(String? uri, int index, List<PlayerModel> musicList)?
         started,
     TResult Function()? pauseSong,
     TResult Function()? refreashPlayer,
@@ -814,7 +819,8 @@ class _$ResumeSongImpl with DiagnosticableTreeMixin implements ResumeSong {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? uri, int index, List<SongModel> musicList)
+    required TResult Function(
+            String? uri, int index, List<PlayerModel> musicList)
         started,
     required TResult Function() pauseSong,
     required TResult Function() refreashPlayer,
@@ -831,7 +837,7 @@ class _$ResumeSongImpl with DiagnosticableTreeMixin implements ResumeSong {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? uri, int index, List<SongModel> musicList)?
+    TResult? Function(String? uri, int index, List<PlayerModel> musicList)?
         started,
     TResult? Function()? pauseSong,
     TResult? Function()? refreashPlayer,
@@ -848,7 +854,7 @@ class _$ResumeSongImpl with DiagnosticableTreeMixin implements ResumeSong {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? uri, int index, List<SongModel> musicList)?
+    TResult Function(String? uri, int index, List<PlayerModel> musicList)?
         started,
     TResult Function()? pauseSong,
     TResult Function()? refreashPlayer,
@@ -1026,7 +1032,8 @@ class _$SongSliderImpl with DiagnosticableTreeMixin implements SongSlider {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? uri, int index, List<SongModel> musicList)
+    required TResult Function(
+            String? uri, int index, List<PlayerModel> musicList)
         started,
     required TResult Function() pauseSong,
     required TResult Function() refreashPlayer,
@@ -1043,7 +1050,7 @@ class _$SongSliderImpl with DiagnosticableTreeMixin implements SongSlider {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? uri, int index, List<SongModel> musicList)?
+    TResult? Function(String? uri, int index, List<PlayerModel> musicList)?
         started,
     TResult? Function()? pauseSong,
     TResult? Function()? refreashPlayer,
@@ -1060,7 +1067,7 @@ class _$SongSliderImpl with DiagnosticableTreeMixin implements SongSlider {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? uri, int index, List<SongModel> musicList)?
+    TResult Function(String? uri, int index, List<PlayerModel> musicList)?
         started,
     TResult Function()? pauseSong,
     TResult Function()? refreashPlayer,
@@ -1214,7 +1221,8 @@ class _$SeekSongImpl with DiagnosticableTreeMixin implements SeekSong {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? uri, int index, List<SongModel> musicList)
+    required TResult Function(
+            String? uri, int index, List<PlayerModel> musicList)
         started,
     required TResult Function() pauseSong,
     required TResult Function() refreashPlayer,
@@ -1231,7 +1239,7 @@ class _$SeekSongImpl with DiagnosticableTreeMixin implements SeekSong {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? uri, int index, List<SongModel> musicList)?
+    TResult? Function(String? uri, int index, List<PlayerModel> musicList)?
         started,
     TResult? Function()? pauseSong,
     TResult? Function()? refreashPlayer,
@@ -1248,7 +1256,7 @@ class _$SeekSongImpl with DiagnosticableTreeMixin implements SeekSong {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? uri, int index, List<SongModel> musicList)?
+    TResult Function(String? uri, int index, List<PlayerModel> musicList)?
         started,
     TResult Function()? pauseSong,
     TResult Function()? refreashPlayer,
@@ -1332,7 +1340,7 @@ mixin _$PlayerState {
   double get max => throw _privateConstructorUsedError;
   double get value => throw _privateConstructorUsedError;
   String get position => throw _privateConstructorUsedError;
-  List<SongModel> get musicList => throw _privateConstructorUsedError;
+  List<PlayerModel> get musicList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PlayerStateCopyWith<PlayerState> get copyWith =>
@@ -1354,7 +1362,7 @@ abstract class $PlayerStateCopyWith<$Res> {
       double max,
       double value,
       String position,
-      List<SongModel> musicList});
+      List<PlayerModel> musicList});
 }
 
 /// @nodoc
@@ -1416,7 +1424,7 @@ class _$PlayerStateCopyWithImpl<$Res, $Val extends PlayerState>
       musicList: null == musicList
           ? _value.musicList
           : musicList // ignore: cast_nullable_to_non_nullable
-              as List<SongModel>,
+              as List<PlayerModel>,
     ) as $Val);
   }
 }
@@ -1438,7 +1446,7 @@ abstract class _$$PlayerStateImplCopyWith<$Res>
       double max,
       double value,
       String position,
-      List<SongModel> musicList});
+      List<PlayerModel> musicList});
 }
 
 /// @nodoc
@@ -1498,7 +1506,7 @@ class __$$PlayerStateImplCopyWithImpl<$Res>
       musicList: null == musicList
           ? _value._musicList
           : musicList // ignore: cast_nullable_to_non_nullable
-              as List<SongModel>,
+              as List<PlayerModel>,
     ));
   }
 }
@@ -1515,7 +1523,7 @@ class _$PlayerStateImpl with DiagnosticableTreeMixin implements _PlayerState {
       required this.max,
       required this.value,
       required this.position,
-      required final List<SongModel> musicList})
+      required final List<PlayerModel> musicList})
       : _musicList = musicList;
 
   @override
@@ -1534,9 +1542,9 @@ class _$PlayerStateImpl with DiagnosticableTreeMixin implements _PlayerState {
   final double value;
   @override
   final String position;
-  final List<SongModel> _musicList;
+  final List<PlayerModel> _musicList;
   @override
-  List<SongModel> get musicList {
+  List<PlayerModel> get musicList {
     if (_musicList is EqualUnmodifiableListView) return _musicList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_musicList);
@@ -1614,7 +1622,7 @@ abstract class _PlayerState implements PlayerState {
       required final double max,
       required final double value,
       required final String position,
-      required final List<SongModel> musicList}) = _$PlayerStateImpl;
+      required final List<PlayerModel> musicList}) = _$PlayerStateImpl;
 
   @override
   int get index;
@@ -1633,7 +1641,7 @@ abstract class _PlayerState implements PlayerState {
   @override
   String get position;
   @override
-  List<SongModel> get musicList;
+  List<PlayerModel> get musicList;
   @override
   @JsonKey(ignore: true)
   _$$PlayerStateImplCopyWith<_$PlayerStateImpl> get copyWith =>

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_player/UI/Musics/widgets/music_tile.dart';
 import 'package:music_player/backend/application/music_list/music_list_bloc.dart';
+import 'package:music_player/backend/models/player/player_model.dart';
 
 class MusicListItems extends StatelessWidget {
   const MusicListItems({super.key});
@@ -10,6 +11,13 @@ class MusicListItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MusicListBloc, MusicListState>(
         builder: (context, state) {
+      List<PlayerModel> musicList = state.musicList.map((music) {
+        return PlayerModel(
+            id: music.id,
+            title: music.displayNameWOExt,
+            authour: music.artist,
+            uri: music.uri);
+      }).toList();
       return state.musicList.isEmpty
           ? const Center(
               child: Text(
@@ -28,7 +36,7 @@ class MusicListItems extends StatelessWidget {
                   author: state.musicList[index].artist,
                   index: index,
                   uri: state.musicList[index].uri,
-                  musicList: state.musicList,
+                  musicList: musicList,
                 );
               },
               separatorBuilder: (context, index) => Divider(

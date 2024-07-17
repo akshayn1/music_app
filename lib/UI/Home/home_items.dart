@@ -4,6 +4,7 @@ import 'package:music_player/UI/Home/widgets/fav_tiles.dart';
 import 'package:music_player/UI/Home/widgets/playlist_card.dart';
 import 'package:music_player/UI/core/constants.dart';
 import 'package:music_player/backend/application/favourites/favourites_bloc.dart';
+import 'package:music_player/backend/models/player/player_model.dart';
 
 class HomeItems extends StatelessWidget {
   const HomeItems({super.key});
@@ -38,6 +39,13 @@ class HomeItems extends StatelessWidget {
           ),
           BlocBuilder<FavouritesBloc, FavouritesState>(
             builder: (context, state) {
+              List<PlayerModel> favList = state.favList.map((ele) {
+                return PlayerModel(
+                    id: ele.id,
+                    title: ele.title,
+                    authour: ele.authour,
+                    uri: ele.uri);
+              }).toList();
               if (state.favList.isEmpty) {
                 return const Center(
                   child: Text(
@@ -57,6 +65,9 @@ class HomeItems extends StatelessWidget {
                       id: state.favList[index].id,
                       title: state.favList[index].title,
                       authour: state.favList[index].authour,
+                      favMusic: favList,
+                      index: index,
+                      uri: state.favList[index].uri,
                     ),
                   ),
                 );

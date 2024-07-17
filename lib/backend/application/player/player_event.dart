@@ -5,7 +5,7 @@ class PlayerEvent with _$PlayerEvent {
   const factory PlayerEvent.started({
     required String? uri,
     required int index,
-    required List<SongModel> musicList,
+    required List<PlayerModel> musicList,
   }) = Started;
 
   const factory PlayerEvent.pauseSong() = PauseSong;

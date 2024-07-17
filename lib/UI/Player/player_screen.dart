@@ -75,7 +75,7 @@ class PlayerScreen extends StatelessWidget {
                   maxLines: 1,
                   state.musicList.isEmpty
                       ? "Ttile"
-                      : state.musicList[index].displayNameWOExt,
+                      : state.musicList[index].title,
                   style: const TextStyle(
                       color: Colors.white,
                       fontSize: 30,
@@ -84,7 +84,7 @@ class PlayerScreen extends StatelessWidget {
                 Text(
                   state.musicList.isEmpty
                       ? "Authour"
-                      : state.musicList[index].artist!,
+                      : state.musicList[index].authour!,
                   style: TextStyle(color: Colors.grey[400], fontSize: 16),
                 ),
                 const SizedBox(
@@ -151,7 +151,7 @@ class PlayerScreen extends StatelessWidget {
                               final favMusic = FavSongs(
                                 id: state.musicList[index].id,
                                 title: state.musicList[index].title,
-                                authour: state.musicList[index].artist!,
+                                authour: state.musicList[index].authour!,
                                 uri: state.musicList[index].uri!,
                               );
 

@@ -11,7 +11,7 @@ class PlayerState with _$PlayerState {
     required double max,
     required double value,
     required String position,
-    required List<SongModel> musicList,
+    required List<PlayerModel> musicList,
   }) = _PlayerState;
 
   factory PlayerState.initial() => const PlayerState(
