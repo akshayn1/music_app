@@ -1,6 +1,6 @@
-# music_player
+# Music Player
 
-A new Flutter project.
+A wonder full music player in android for locally stored audios.
 
 ## Getting Started
 
