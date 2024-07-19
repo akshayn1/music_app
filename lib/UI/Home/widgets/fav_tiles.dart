@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -65,9 +63,7 @@ class FavTiles extends StatelessWidget {
                       if (state.isFirstSong) {
                         BlocProvider.of<PlayerBloc>(context)
                             .add(const ResumeSong());
-                        log("Called => Resume");
                       } else {
-                        log("Called => New");
                         BlocProvider.of<PlayerBloc>(context).add(Started(
                             uri: uri, index: index, musicList: favMusic));
                         isStarted.value = true;

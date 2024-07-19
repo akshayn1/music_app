@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:music_player/backend/models/fav_model.dart';
 
@@ -10,7 +9,6 @@ Future<void> addFavMusic(FavSongs song) async {
 Future<List<FavSongs>> loadFavMusic() async {
   final favDb = await Hive.openBox<FavSongs>('favourites_db');
   final List<FavSongs> favList = favDb.values.toList();
-  log(favList.length.toString());
   return favList;
 }
 

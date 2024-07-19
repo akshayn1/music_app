@@ -13,7 +13,6 @@ class PlayerService {
 
   void play(String? url) {
     try {
-      log("message chk");
       audioPlayer.setAudioSource(AudioSource.uri(Uri.parse(url!)));
       audioPlayer.play();
       upDatePosition();

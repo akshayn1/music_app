@@ -1,6 +1,4 @@
-import 'dart:async';
 import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -127,15 +125,11 @@ class PlayerScreen extends StatelessWidget {
                         builder: (context, state2) {
                           try {
                             for (var ele in state2.favList) {
-                              log(" FavList Music ID : ${ele.id}\n");
                               if (ele.id == state.musicList[index].id) {
-                                log(zone: Zone.current, "Found");
-                                log(" Founded Music ID : ${ele.id}\n");
                                 BlocProvider.of<FavouritesBloc>(context)
                                     .add(const RefreshUI(equal: true));
                                 break;
                               } else {
-                                log("Not Found");
                                 BlocProvider.of<FavouritesBloc>(context)
                                     .add(const RefreshUI(equal: false));
                               }
@@ -143,7 +137,6 @@ class PlayerScreen extends StatelessWidget {
                           } catch (e) {
                             BlocProvider.of<FavouritesBloc>(context)
                                 .add(const RefreshUI(equal: false));
-                            log("Empty List");
                           }
 
                           return IconButton(
@@ -156,13 +149,11 @@ class PlayerScreen extends StatelessWidget {
                               );
 
                               if (state2.equal) {
-                                log("Off");
                                 BlocProvider.of<FavouritesBloc>(context)
                                     .add(const RefreshUI(equal: false));
                                 BlocProvider.of<FavouritesBloc>(context).add(
                                     DeleteFavs(id: state.musicList[index].id));
                               } else {
-                                log('On');
                                 BlocProvider.of<FavouritesBloc>(context)
                                     .add(const RefreshUI(equal: true));
                                 BlocProvider.of<FavouritesBloc>(context)

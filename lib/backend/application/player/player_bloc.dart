@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:just_audio/just_audio.dart';
-
 import 'package:music_player/backend/domain/player_service.dart';
 import 'package:music_player/backend/models/player/player_model.dart';
 import 'package:on_audio_query/on_audio_query.dart';
@@ -14,10 +13,18 @@ part 'player_bloc.freezed.dart';
 class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
   PlayerBloc() : super(PlayerState.initial()) {
     final playSerivce = PlayerService();
-
+    final ValueNotifier<List<PlayerModel>> musics = ValueNotifier([]);
+    final ValueNotifier<int> index = ValueNotifier(0);
     playSerivce.audioPlayer.playerStateStream.listen((state) {
       if (state.processingState == ProcessingState.completed) {
-        add(const StopSong());
+        try {
+          add(Started(
+              uri: musics.value[index.value + 1].uri,
+              index: index.value + 1,
+              musicList: musics.value));
+        } catch (e) {
+          add(const StopSong());
+        }
       }
     });
 
@@ -45,6 +52,8 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
           onceArt: false,
           musicList: event.musicList,
           isFirstSong: true));
+      musics.value = event.musicList;
+      index.value = event.index;
     });
 
     on<PauseSong>((event, emit) {
@@ -63,7 +72,6 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
       emit(state.copyWith(isPlaying: true));
     });
     on<SongSlider>((event, emit) {
-      // log(" Slider :${event.position.toString()}");
       emit(state.copyWith(
           onceArt: true,
           value: event.position,

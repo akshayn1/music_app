@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:music_player/UI/Player/player_screen.dart';
+import 'package:music_player/UI/Playlist/playlist_screen.dart';
 import 'package:music_player/UI/core/constants.dart';
 
 class PlayListCard extends StatelessWidget {
@@ -11,18 +13,27 @@ class PlayListCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            clipBehavior: Clip.hardEdge,
-            height: 220,
-            width: 180,
-            decoration: BoxDecoration(
-              color: Colors.red,
-              borderRadius: BorderRadius.circular(20),
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) {
+                  return const PlayListScreen();
+                },
+              ));
+            },
+            child: Container(
+              clipBehavior: Clip.hardEdge,
+              height: 220,
+              width: 180,
+              decoration: BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: const Image(
+                  fit: BoxFit.fill,
+                  image: NetworkImage(
+                      "https://i.pinimg.com/736x/cd/6c/8f/cd6c8f834fce26428e62a46d2c27357b.jpg")),
             ),
-            child: const Image(
-                fit: BoxFit.fill,
-                image: NetworkImage(
-                    "https://i.pinimg.com/736x/cd/6c/8f/cd6c8f834fce26428e62a46d2c27357b.jpg")),
           ),
           const SizedBox(
             height: 10,
