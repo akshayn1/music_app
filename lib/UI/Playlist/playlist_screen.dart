@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_player/UI/MainPage/main_page.dart';
@@ -42,14 +44,11 @@ class PlayListScreen extends StatelessWidget {
               ),
               body: Stack(
                 children: [
-                  const SizedBox(
-                    height: 350,
-                    width: double.infinity,
-                    child: Image(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(
-                            "https://i.pinimg.com/736x/cd/6c/8f/cd6c8f834fce26428e62a46d2c27357b.jpg")),
-                  ),
+                  SizedBox(
+                      height: 350,
+                      width: double.infinity,
+                      child: Image.file(
+                          fit: BoxFit.cover, File(playlist.playListImageUrl))),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

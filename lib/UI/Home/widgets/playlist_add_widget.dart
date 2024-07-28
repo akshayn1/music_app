@@ -1,13 +1,14 @@
+import 'dart:developer';
 import 'dart:ui';
-
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 import 'package:music_player/backend/application/playlist/playlist_bloc.dart';
 import 'package:music_player/backend/models/playlist/playlist_model.dart';
 
 Future playListAddSheet(BuildContext context) {
   TextEditingController textController = TextEditingController();
+  ValueNotifier<String> imagePath = ValueNotifier('');
   return showDialog(
       context: context,
       builder: (context) => Stack(
@@ -62,7 +63,17 @@ Future playListAddSheet(BuildContext context) {
                                     ),
                                     Center(
                                       child: IconButton(
-                                        onPressed: () {},
+                                        onPressed: () async {
+                                          try {
+                                            final image = await ImagePicker()
+                                                .pickImage(
+                                                    source:
+                                                        ImageSource.gallery);
+                                            imagePath.value = image!.path;
+                                          } catch (e) {
+                                            log(e.toString());
+                                          }
+                                        },
                                         icon: const Icon(Icons.edit_document),
                                         iconSize: 45,
                                         color: Colors.grey[400],
@@ -120,7 +131,7 @@ Future playListAddSheet(BuildContext context) {
                                   onPressed: () {
                                     final playlist = PlayListModel([], 0,
                                         playListTitle: textController.text,
-                                        playListImageUrl: '');
+                                        playListImageUrl: imagePath.value);
                                     BlocProvider.of<PlaylistBloc>(context)
                                         .add(AddPlaylist(playlist: playlist));
                                     BlocProvider.of<PlaylistBloc>(context)
@@ -164,13 +175,4 @@ Future playListAddSheet(BuildContext context) {
               ),
             ],
           ));
-}
-
-int datetime() {
-  DateTime now = DateTime.now();
-  String formattedDate = DateFormat('ddMMyyHHmmss').format(now);
-  int dateTimeInt = int.parse(formattedDate);
-
-  print(dateTimeInt);
-  return dateTimeInt;
 }

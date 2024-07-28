@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:music_player/UI/Playlist/playlist_screen.dart';
 import 'package:music_player/UI/core/constants.dart';
@@ -7,10 +9,12 @@ class PlayListCard extends StatelessWidget {
       {super.key,
       required this.title,
       required this.count,
-      required this.index});
+      required this.index,
+      required this.url});
   final String title;
   final int count;
   final int index;
+  final String url;
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +41,7 @@ class PlayListCard extends StatelessWidget {
                 color: Colors.red,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: const Image(
-                  fit: BoxFit.fill,
-                  image: NetworkImage(
-                      "https://i.pinimg.com/736x/cd/6c/8f/cd6c8f834fce26428e62a46d2c27357b.jpg")),
+              child: Image.file(fit: BoxFit.cover, File(url)),
             ),
           ),
           const SizedBox(

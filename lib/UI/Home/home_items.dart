@@ -51,9 +51,11 @@ class HomeItems extends StatelessWidget {
                         children: List.generate(
                             state.playlist.length,
                             (index) => PlayListCard(
-                                index: index,
-                                title: state.playlist[index].playListTitle,
-                                count: state.playlist[index].musicList.length)),
+                                  index: index,
+                                  title: state.playlist[index].playListTitle,
+                                  count: state.playlist[index].musicList.length,
+                                  url: state.playlist[index].playListImageUrl,
+                                )),
                       )
                     : const Center(
                         child: Text(
