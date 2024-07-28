@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:music_player/UI/Player/widgets/player_playlist_add.dart';
 import 'package:music_player/UI/core/constants.dart';
 import 'package:music_player/backend/application/favourites/favourites_bloc.dart';
 import 'package:music_player/backend/application/player/player_bloc.dart';
@@ -13,6 +14,7 @@ class PlayerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ValueNotifier<bool> isAdded = ValueNotifier(false);
     return BlocBuilder<PlayerBloc, PlayerState>(
       builder: (context, state) {
         var index = state.index;
@@ -126,53 +128,54 @@ class PlayerScreen extends StatelessWidget {
                           try {
                             for (var ele in state2.favList) {
                               if (ele.id == state.musicList[index].id) {
-                                BlocProvider.of<FavouritesBloc>(context)
-                                    .add(const RefreshUI(equal: true));
+                                isAdded.value = true;
+
                                 break;
                               } else {
-                                BlocProvider.of<FavouritesBloc>(context)
-                                    .add(const RefreshUI(equal: false));
+                                isAdded.value = false;
                               }
                             }
                           } catch (e) {
-                            BlocProvider.of<FavouritesBloc>(context)
-                                .add(const RefreshUI(equal: false));
+                            isAdded.value = false;
                           }
 
-                          return IconButton(
-                            onPressed: () {
-                              final favMusic = FavSongs(
-                                id: state.musicList[index].id,
-                                title: state.musicList[index].title,
-                                authour: state.musicList[index].authour!,
-                                uri: state.musicList[index].uri!,
-                              );
+                          return ValueListenableBuilder(
+                              valueListenable: isAdded,
+                              builder: (context, value, child) {
+                                return IconButton(
+                                  onPressed: () {
+                                    final favMusic = FavSongs(
+                                      id: state.musicList[index].id,
+                                      title: state.musicList[index].title,
+                                      authour: state.musicList[index].authour!,
+                                      uri: state.musicList[index].uri!,
+                                    );
 
-                              if (state2.equal) {
-                                BlocProvider.of<FavouritesBloc>(context)
-                                    .add(const RefreshUI(equal: false));
-                                BlocProvider.of<FavouritesBloc>(context).add(
-                                    DeleteFavs(id: state.musicList[index].id));
-                              } else {
-                                BlocProvider.of<FavouritesBloc>(context)
-                                    .add(const RefreshUI(equal: true));
-                                BlocProvider.of<FavouritesBloc>(context)
-                                    .add(AddFavs(favList: favMusic));
-                              }
-                            },
-                            style: const ButtonStyle(
-                                backgroundColor: WidgetStatePropertyAll(
-                                    Color.fromARGB(255, 31, 31, 31))),
-                            icon: state2.equal
-                                ? const Icon(
-                                    CupertinoIcons.heart_fill,
-                                    color: Colors.red,
-                                  )
-                                : const Icon(
-                                    CupertinoIcons.heart,
-                                    color: Colors.white,
-                                  ),
-                          );
+                                    if (value) {
+                                      isAdded.value = false;
+                                      BlocProvider.of<FavouritesBloc>(context)
+                                          .add(DeleteFavs(
+                                              id: state.musicList[index].id));
+                                    } else {
+                                      isAdded.value = true;
+                                      BlocProvider.of<FavouritesBloc>(context)
+                                          .add(AddFavs(favList: favMusic));
+                                    }
+                                  },
+                                  style: const ButtonStyle(
+                                      backgroundColor: WidgetStatePropertyAll(
+                                          Color.fromARGB(255, 31, 31, 31))),
+                                  icon: value
+                                      ? const Icon(
+                                          CupertinoIcons.heart_fill,
+                                          color: Colors.red,
+                                        )
+                                      : const Icon(
+                                          CupertinoIcons.heart,
+                                          color: Colors.white,
+                                        ),
+                                );
+                              });
                         },
                       ),
                       IconButton(
@@ -238,7 +241,14 @@ class PlayerScreen extends StatelessWidget {
                           style: const ButtonStyle(
                               backgroundColor: WidgetStatePropertyAll(
                                   Color.fromARGB(255, 31, 31, 31))),
-                          onPressed: () {},
+                          onPressed: () {
+                            addToPlaylist(
+                                context,
+                                state.musicList[index].id,
+                                state.musicList[index].title,
+                                state.musicList[index].authour!,
+                                state.musicList[index].uri!);
+                          },
                           icon: const Icon(
                             Icons.playlist_add,
                             color: Colors.white,

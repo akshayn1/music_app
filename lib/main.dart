@@ -6,7 +6,6 @@ import 'package:music_player/backend/application/favourites/favourites_bloc.dart
 import 'package:music_player/backend/application/music_list/music_list_bloc.dart';
 import 'package:music_player/backend/application/player/player_bloc.dart';
 import 'package:music_player/backend/application/playlist/playlist_bloc.dart';
-import 'package:music_player/backend/domain/music_service.dart';
 import 'package:music_player/backend/models/favourites/fav_model.dart';
 import 'package:music_player/backend/models/playlist/playlist_model.dart';
 

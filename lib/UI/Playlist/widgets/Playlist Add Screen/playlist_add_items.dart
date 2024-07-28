@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_player/UI/Playlist/widgets/Playlist%20Add%20Screen/playlist_music_tile.dart';
 import 'package:music_player/backend/application/music_list/music_list_bloc.dart';
-import 'package:music_player/backend/models/player/player_model.dart';
 import 'package:music_player/backend/models/playlist/playlist_model.dart';
 
 class PlayListAddItems extends StatelessWidget {

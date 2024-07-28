@@ -1,15 +1,24 @@
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:music_player/UI/Playlist/playlist_screen.dart';
+import 'package:music_player/backend/application/playlist/playlist_bloc.dart';
 
 class PlaylistEditScreen extends StatelessWidget {
-  const PlaylistEditScreen({super.key});
+  const PlaylistEditScreen(
+      {super.key,
+      required this.playListKey,
+      required this.title,
+      required this.playIndex});
+
+  final int playListKey;
+  final String title;
+  final int playIndex;
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController textEditingController;
+    TextEditingController textEditingController = TextEditingController();
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -33,7 +42,12 @@ class PlaylistEditScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () {
-              Navigator.of(context).pop();
+              BlocProvider.of<PlaylistBloc>(context).add(UpdatePlaylistInfo(
+                  title: textEditingController.text,
+                  key: playListKey,
+                  url: ''));
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => PlayListScreen(index: playIndex)));
             },
             child: const Text(
               "Done",
@@ -101,7 +115,7 @@ class PlaylistEditScreen extends StatelessWidget {
                   height: 50,
                   width: 230,
                   child: TextFormField(
-                    initialValue: 'Hello',
+                    controller: textEditingController,
                     style: const TextStyle(color: Colors.white, fontSize: 18),
                   ),
                 )

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:music_player/UI/Player/player_screen.dart';
 import 'package:music_player/UI/Playlist/playlist_screen.dart';
 import 'package:music_player/UI/core/constants.dart';
 

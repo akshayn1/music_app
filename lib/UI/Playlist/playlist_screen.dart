@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_player/UI/MainPage/main_page.dart';
@@ -91,7 +88,13 @@ class PlayListScreen extends StatelessWidget {
                                       Navigator.of(context).push(
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  const PlaylistEditScreen()));
+                                                  PlaylistEditScreen(
+                                                    playListKey: state
+                                                        .playlist[index].id,
+                                                    title: state.playlist[index]
+                                                        .playListTitle,
+                                                    playIndex: index,
+                                                  )));
                                     },
                                     icon: const Icon(
                                       Icons.edit,
@@ -141,7 +144,7 @@ class PlayListScreen extends StatelessWidget {
                               ],
                             ),
                             const Divider(
-                              thickness: 0.3,
+                              thickness: 0.1,
                             ),
                             PlaylistTile(
                               playListIndex: index,

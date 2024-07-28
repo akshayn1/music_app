@@ -1,16 +1,13 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:music_player/backend/application/playlist/playlist_bloc.dart';
 import 'package:music_player/backend/models/playlist/playlist_model.dart';
 
 Future playListAddSheet(BuildContext context) {
-  TextEditingController _textController = TextEditingController();
+  TextEditingController textController = TextEditingController();
   return showDialog(
       context: context,
       builder: (context) => Stack(
@@ -99,7 +96,7 @@ Future playListAddSheet(BuildContext context) {
                                 height: 50,
                                 width: 200,
                                 child: TextFormField(
-                                  controller: _textController,
+                                  controller: textController,
                                   style: const TextStyle(
                                       color: Colors.white, fontSize: 18),
                                 ),
@@ -122,7 +119,7 @@ Future playListAddSheet(BuildContext context) {
                                   ),
                                   onPressed: () {
                                     final playlist = PlayListModel([], 0,
-                                        playListTitle: _textController.text,
+                                        playListTitle: textController.text,
                                         playListImageUrl: '');
                                     BlocProvider.of<PlaylistBloc>(context)
                                         .add(AddPlaylist(playlist: playlist));

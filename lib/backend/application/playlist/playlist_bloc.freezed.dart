@@ -23,7 +23,8 @@ mixin _$PlaylistEvent {
     required TResult Function(int key) removePlayList,
     required TResult Function(PlayMusicModel musicList, int key) updatePlayList,
     required TResult Function(int musicId, int key) deleteMusicPlayList,
-    required TResult Function(bool isEqual) refreshPlayList,
+    required TResult Function(String title, int key, String url)
+        updatePlaylistInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -33,7 +34,7 @@ mixin _$PlaylistEvent {
     TResult? Function(int key)? removePlayList,
     TResult? Function(PlayMusicModel musicList, int key)? updatePlayList,
     TResult? Function(int musicId, int key)? deleteMusicPlayList,
-    TResult? Function(bool isEqual)? refreshPlayList,
+    TResult? Function(String title, int key, String url)? updatePlaylistInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,7 +44,7 @@ mixin _$PlaylistEvent {
     TResult Function(int key)? removePlayList,
     TResult Function(PlayMusicModel musicList, int key)? updatePlayList,
     TResult Function(int musicId, int key)? deleteMusicPlayList,
-    TResult Function(bool isEqual)? refreshPlayList,
+    TResult Function(String title, int key, String url)? updatePlaylistInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,7 +55,7 @@ mixin _$PlaylistEvent {
     required TResult Function(RemovePlayList value) removePlayList,
     required TResult Function(UpdatePlayList value) updatePlayList,
     required TResult Function(DeleteMusicPlayList value) deleteMusicPlayList,
-    required TResult Function(RefreshPlayList value) refreshPlayList,
+    required TResult Function(UpdatePlaylistInfo value) updatePlaylistInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,7 +65,7 @@ mixin _$PlaylistEvent {
     TResult? Function(RemovePlayList value)? removePlayList,
     TResult? Function(UpdatePlayList value)? updatePlayList,
     TResult? Function(DeleteMusicPlayList value)? deleteMusicPlayList,
-    TResult? Function(RefreshPlayList value)? refreshPlayList,
+    TResult? Function(UpdatePlaylistInfo value)? updatePlaylistInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,7 +75,7 @@ mixin _$PlaylistEvent {
     TResult Function(RemovePlayList value)? removePlayList,
     TResult Function(UpdatePlayList value)? updatePlayList,
     TResult Function(DeleteMusicPlayList value)? deleteMusicPlayList,
-    TResult Function(RefreshPlayList value)? refreshPlayList,
+    TResult Function(UpdatePlaylistInfo value)? updatePlaylistInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -141,7 +142,8 @@ class _$GetPlayListImpl implements GetPlayList {
     required TResult Function(int key) removePlayList,
     required TResult Function(PlayMusicModel musicList, int key) updatePlayList,
     required TResult Function(int musicId, int key) deleteMusicPlayList,
-    required TResult Function(bool isEqual) refreshPlayList,
+    required TResult Function(String title, int key, String url)
+        updatePlaylistInfo,
   }) {
     return getPlayList();
   }
@@ -154,7 +156,7 @@ class _$GetPlayListImpl implements GetPlayList {
     TResult? Function(int key)? removePlayList,
     TResult? Function(PlayMusicModel musicList, int key)? updatePlayList,
     TResult? Function(int musicId, int key)? deleteMusicPlayList,
-    TResult? Function(bool isEqual)? refreshPlayList,
+    TResult? Function(String title, int key, String url)? updatePlaylistInfo,
   }) {
     return getPlayList?.call();
   }
@@ -167,7 +169,7 @@ class _$GetPlayListImpl implements GetPlayList {
     TResult Function(int key)? removePlayList,
     TResult Function(PlayMusicModel musicList, int key)? updatePlayList,
     TResult Function(int musicId, int key)? deleteMusicPlayList,
-    TResult Function(bool isEqual)? refreshPlayList,
+    TResult Function(String title, int key, String url)? updatePlaylistInfo,
     required TResult orElse(),
   }) {
     if (getPlayList != null) {
@@ -184,7 +186,7 @@ class _$GetPlayListImpl implements GetPlayList {
     required TResult Function(RemovePlayList value) removePlayList,
     required TResult Function(UpdatePlayList value) updatePlayList,
     required TResult Function(DeleteMusicPlayList value) deleteMusicPlayList,
-    required TResult Function(RefreshPlayList value) refreshPlayList,
+    required TResult Function(UpdatePlaylistInfo value) updatePlaylistInfo,
   }) {
     return getPlayList(this);
   }
@@ -197,7 +199,7 @@ class _$GetPlayListImpl implements GetPlayList {
     TResult? Function(RemovePlayList value)? removePlayList,
     TResult? Function(UpdatePlayList value)? updatePlayList,
     TResult? Function(DeleteMusicPlayList value)? deleteMusicPlayList,
-    TResult? Function(RefreshPlayList value)? refreshPlayList,
+    TResult? Function(UpdatePlaylistInfo value)? updatePlaylistInfo,
   }) {
     return getPlayList?.call(this);
   }
@@ -210,7 +212,7 @@ class _$GetPlayListImpl implements GetPlayList {
     TResult Function(RemovePlayList value)? removePlayList,
     TResult Function(UpdatePlayList value)? updatePlayList,
     TResult Function(DeleteMusicPlayList value)? deleteMusicPlayList,
-    TResult Function(RefreshPlayList value)? refreshPlayList,
+    TResult Function(UpdatePlaylistInfo value)? updatePlaylistInfo,
     required TResult orElse(),
   }) {
     if (getPlayList != null) {
@@ -294,7 +296,8 @@ class _$AddPlaylistImpl implements AddPlaylist {
     required TResult Function(int key) removePlayList,
     required TResult Function(PlayMusicModel musicList, int key) updatePlayList,
     required TResult Function(int musicId, int key) deleteMusicPlayList,
-    required TResult Function(bool isEqual) refreshPlayList,
+    required TResult Function(String title, int key, String url)
+        updatePlaylistInfo,
   }) {
     return addPlayList(playlist);
   }
@@ -307,7 +310,7 @@ class _$AddPlaylistImpl implements AddPlaylist {
     TResult? Function(int key)? removePlayList,
     TResult? Function(PlayMusicModel musicList, int key)? updatePlayList,
     TResult? Function(int musicId, int key)? deleteMusicPlayList,
-    TResult? Function(bool isEqual)? refreshPlayList,
+    TResult? Function(String title, int key, String url)? updatePlaylistInfo,
   }) {
     return addPlayList?.call(playlist);
   }
@@ -320,7 +323,7 @@ class _$AddPlaylistImpl implements AddPlaylist {
     TResult Function(int key)? removePlayList,
     TResult Function(PlayMusicModel musicList, int key)? updatePlayList,
     TResult Function(int musicId, int key)? deleteMusicPlayList,
-    TResult Function(bool isEqual)? refreshPlayList,
+    TResult Function(String title, int key, String url)? updatePlaylistInfo,
     required TResult orElse(),
   }) {
     if (addPlayList != null) {
@@ -337,7 +340,7 @@ class _$AddPlaylistImpl implements AddPlaylist {
     required TResult Function(RemovePlayList value) removePlayList,
     required TResult Function(UpdatePlayList value) updatePlayList,
     required TResult Function(DeleteMusicPlayList value) deleteMusicPlayList,
-    required TResult Function(RefreshPlayList value) refreshPlayList,
+    required TResult Function(UpdatePlaylistInfo value) updatePlaylistInfo,
   }) {
     return addPlayList(this);
   }
@@ -350,7 +353,7 @@ class _$AddPlaylistImpl implements AddPlaylist {
     TResult? Function(RemovePlayList value)? removePlayList,
     TResult? Function(UpdatePlayList value)? updatePlayList,
     TResult? Function(DeleteMusicPlayList value)? deleteMusicPlayList,
-    TResult? Function(RefreshPlayList value)? refreshPlayList,
+    TResult? Function(UpdatePlaylistInfo value)? updatePlaylistInfo,
   }) {
     return addPlayList?.call(this);
   }
@@ -363,7 +366,7 @@ class _$AddPlaylistImpl implements AddPlaylist {
     TResult Function(RemovePlayList value)? removePlayList,
     TResult Function(UpdatePlayList value)? updatePlayList,
     TResult Function(DeleteMusicPlayList value)? deleteMusicPlayList,
-    TResult Function(RefreshPlayList value)? refreshPlayList,
+    TResult Function(UpdatePlaylistInfo value)? updatePlaylistInfo,
     required TResult orElse(),
   }) {
     if (addPlayList != null) {
@@ -453,7 +456,8 @@ class _$RemovePlayListImpl implements RemovePlayList {
     required TResult Function(int key) removePlayList,
     required TResult Function(PlayMusicModel musicList, int key) updatePlayList,
     required TResult Function(int musicId, int key) deleteMusicPlayList,
-    required TResult Function(bool isEqual) refreshPlayList,
+    required TResult Function(String title, int key, String url)
+        updatePlaylistInfo,
   }) {
     return removePlayList(key);
   }
@@ -466,7 +470,7 @@ class _$RemovePlayListImpl implements RemovePlayList {
     TResult? Function(int key)? removePlayList,
     TResult? Function(PlayMusicModel musicList, int key)? updatePlayList,
     TResult? Function(int musicId, int key)? deleteMusicPlayList,
-    TResult? Function(bool isEqual)? refreshPlayList,
+    TResult? Function(String title, int key, String url)? updatePlaylistInfo,
   }) {
     return removePlayList?.call(key);
   }
@@ -479,7 +483,7 @@ class _$RemovePlayListImpl implements RemovePlayList {
     TResult Function(int key)? removePlayList,
     TResult Function(PlayMusicModel musicList, int key)? updatePlayList,
     TResult Function(int musicId, int key)? deleteMusicPlayList,
-    TResult Function(bool isEqual)? refreshPlayList,
+    TResult Function(String title, int key, String url)? updatePlaylistInfo,
     required TResult orElse(),
   }) {
     if (removePlayList != null) {
@@ -496,7 +500,7 @@ class _$RemovePlayListImpl implements RemovePlayList {
     required TResult Function(RemovePlayList value) removePlayList,
     required TResult Function(UpdatePlayList value) updatePlayList,
     required TResult Function(DeleteMusicPlayList value) deleteMusicPlayList,
-    required TResult Function(RefreshPlayList value) refreshPlayList,
+    required TResult Function(UpdatePlaylistInfo value) updatePlaylistInfo,
   }) {
     return removePlayList(this);
   }
@@ -509,7 +513,7 @@ class _$RemovePlayListImpl implements RemovePlayList {
     TResult? Function(RemovePlayList value)? removePlayList,
     TResult? Function(UpdatePlayList value)? updatePlayList,
     TResult? Function(DeleteMusicPlayList value)? deleteMusicPlayList,
-    TResult? Function(RefreshPlayList value)? refreshPlayList,
+    TResult? Function(UpdatePlaylistInfo value)? updatePlaylistInfo,
   }) {
     return removePlayList?.call(this);
   }
@@ -522,7 +526,7 @@ class _$RemovePlayListImpl implements RemovePlayList {
     TResult Function(RemovePlayList value)? removePlayList,
     TResult Function(UpdatePlayList value)? updatePlayList,
     TResult Function(DeleteMusicPlayList value)? deleteMusicPlayList,
-    TResult Function(RefreshPlayList value)? refreshPlayList,
+    TResult Function(UpdatePlaylistInfo value)? updatePlaylistInfo,
     required TResult orElse(),
   }) {
     if (removePlayList != null) {
@@ -620,7 +624,8 @@ class _$UpdatePlayListImpl implements UpdatePlayList {
     required TResult Function(int key) removePlayList,
     required TResult Function(PlayMusicModel musicList, int key) updatePlayList,
     required TResult Function(int musicId, int key) deleteMusicPlayList,
-    required TResult Function(bool isEqual) refreshPlayList,
+    required TResult Function(String title, int key, String url)
+        updatePlaylistInfo,
   }) {
     return updatePlayList(musicList, key);
   }
@@ -633,7 +638,7 @@ class _$UpdatePlayListImpl implements UpdatePlayList {
     TResult? Function(int key)? removePlayList,
     TResult? Function(PlayMusicModel musicList, int key)? updatePlayList,
     TResult? Function(int musicId, int key)? deleteMusicPlayList,
-    TResult? Function(bool isEqual)? refreshPlayList,
+    TResult? Function(String title, int key, String url)? updatePlaylistInfo,
   }) {
     return updatePlayList?.call(musicList, key);
   }
@@ -646,7 +651,7 @@ class _$UpdatePlayListImpl implements UpdatePlayList {
     TResult Function(int key)? removePlayList,
     TResult Function(PlayMusicModel musicList, int key)? updatePlayList,
     TResult Function(int musicId, int key)? deleteMusicPlayList,
-    TResult Function(bool isEqual)? refreshPlayList,
+    TResult Function(String title, int key, String url)? updatePlaylistInfo,
     required TResult orElse(),
   }) {
     if (updatePlayList != null) {
@@ -663,7 +668,7 @@ class _$UpdatePlayListImpl implements UpdatePlayList {
     required TResult Function(RemovePlayList value) removePlayList,
     required TResult Function(UpdatePlayList value) updatePlayList,
     required TResult Function(DeleteMusicPlayList value) deleteMusicPlayList,
-    required TResult Function(RefreshPlayList value) refreshPlayList,
+    required TResult Function(UpdatePlaylistInfo value) updatePlaylistInfo,
   }) {
     return updatePlayList(this);
   }
@@ -676,7 +681,7 @@ class _$UpdatePlayListImpl implements UpdatePlayList {
     TResult? Function(RemovePlayList value)? removePlayList,
     TResult? Function(UpdatePlayList value)? updatePlayList,
     TResult? Function(DeleteMusicPlayList value)? deleteMusicPlayList,
-    TResult? Function(RefreshPlayList value)? refreshPlayList,
+    TResult? Function(UpdatePlaylistInfo value)? updatePlaylistInfo,
   }) {
     return updatePlayList?.call(this);
   }
@@ -689,7 +694,7 @@ class _$UpdatePlayListImpl implements UpdatePlayList {
     TResult Function(RemovePlayList value)? removePlayList,
     TResult Function(UpdatePlayList value)? updatePlayList,
     TResult Function(DeleteMusicPlayList value)? deleteMusicPlayList,
-    TResult Function(RefreshPlayList value)? refreshPlayList,
+    TResult Function(UpdatePlaylistInfo value)? updatePlaylistInfo,
     required TResult orElse(),
   }) {
     if (updatePlayList != null) {
@@ -789,7 +794,8 @@ class _$DeleteMusicPlayListImpl implements DeleteMusicPlayList {
     required TResult Function(int key) removePlayList,
     required TResult Function(PlayMusicModel musicList, int key) updatePlayList,
     required TResult Function(int musicId, int key) deleteMusicPlayList,
-    required TResult Function(bool isEqual) refreshPlayList,
+    required TResult Function(String title, int key, String url)
+        updatePlaylistInfo,
   }) {
     return deleteMusicPlayList(musicId, key);
   }
@@ -802,7 +808,7 @@ class _$DeleteMusicPlayListImpl implements DeleteMusicPlayList {
     TResult? Function(int key)? removePlayList,
     TResult? Function(PlayMusicModel musicList, int key)? updatePlayList,
     TResult? Function(int musicId, int key)? deleteMusicPlayList,
-    TResult? Function(bool isEqual)? refreshPlayList,
+    TResult? Function(String title, int key, String url)? updatePlaylistInfo,
   }) {
     return deleteMusicPlayList?.call(musicId, key);
   }
@@ -815,7 +821,7 @@ class _$DeleteMusicPlayListImpl implements DeleteMusicPlayList {
     TResult Function(int key)? removePlayList,
     TResult Function(PlayMusicModel musicList, int key)? updatePlayList,
     TResult Function(int musicId, int key)? deleteMusicPlayList,
-    TResult Function(bool isEqual)? refreshPlayList,
+    TResult Function(String title, int key, String url)? updatePlaylistInfo,
     required TResult orElse(),
   }) {
     if (deleteMusicPlayList != null) {
@@ -832,7 +838,7 @@ class _$DeleteMusicPlayListImpl implements DeleteMusicPlayList {
     required TResult Function(RemovePlayList value) removePlayList,
     required TResult Function(UpdatePlayList value) updatePlayList,
     required TResult Function(DeleteMusicPlayList value) deleteMusicPlayList,
-    required TResult Function(RefreshPlayList value) refreshPlayList,
+    required TResult Function(UpdatePlaylistInfo value) updatePlaylistInfo,
   }) {
     return deleteMusicPlayList(this);
   }
@@ -845,7 +851,7 @@ class _$DeleteMusicPlayListImpl implements DeleteMusicPlayList {
     TResult? Function(RemovePlayList value)? removePlayList,
     TResult? Function(UpdatePlayList value)? updatePlayList,
     TResult? Function(DeleteMusicPlayList value)? deleteMusicPlayList,
-    TResult? Function(RefreshPlayList value)? refreshPlayList,
+    TResult? Function(UpdatePlaylistInfo value)? updatePlaylistInfo,
   }) {
     return deleteMusicPlayList?.call(this);
   }
@@ -858,7 +864,7 @@ class _$DeleteMusicPlayListImpl implements DeleteMusicPlayList {
     TResult Function(RemovePlayList value)? removePlayList,
     TResult Function(UpdatePlayList value)? updatePlayList,
     TResult Function(DeleteMusicPlayList value)? deleteMusicPlayList,
-    TResult Function(RefreshPlayList value)? refreshPlayList,
+    TResult Function(UpdatePlaylistInfo value)? updatePlaylistInfo,
     required TResult orElse(),
   }) {
     if (deleteMusicPlayList != null) {
@@ -881,65 +887,82 @@ abstract class DeleteMusicPlayList implements PlaylistEvent {
 }
 
 /// @nodoc
-abstract class _$$RefreshPlayListImplCopyWith<$Res> {
-  factory _$$RefreshPlayListImplCopyWith(_$RefreshPlayListImpl value,
-          $Res Function(_$RefreshPlayListImpl) then) =
-      __$$RefreshPlayListImplCopyWithImpl<$Res>;
+abstract class _$$UpdatePlaylistInfoImplCopyWith<$Res> {
+  factory _$$UpdatePlaylistInfoImplCopyWith(_$UpdatePlaylistInfoImpl value,
+          $Res Function(_$UpdatePlaylistInfoImpl) then) =
+      __$$UpdatePlaylistInfoImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({bool isEqual});
+  $Res call({String title, int key, String url});
 }
 
 /// @nodoc
-class __$$RefreshPlayListImplCopyWithImpl<$Res>
-    extends _$PlaylistEventCopyWithImpl<$Res, _$RefreshPlayListImpl>
-    implements _$$RefreshPlayListImplCopyWith<$Res> {
-  __$$RefreshPlayListImplCopyWithImpl(
-      _$RefreshPlayListImpl _value, $Res Function(_$RefreshPlayListImpl) _then)
+class __$$UpdatePlaylistInfoImplCopyWithImpl<$Res>
+    extends _$PlaylistEventCopyWithImpl<$Res, _$UpdatePlaylistInfoImpl>
+    implements _$$UpdatePlaylistInfoImplCopyWith<$Res> {
+  __$$UpdatePlaylistInfoImplCopyWithImpl(_$UpdatePlaylistInfoImpl _value,
+      $Res Function(_$UpdatePlaylistInfoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isEqual = null,
+    Object? title = null,
+    Object? key = null,
+    Object? url = null,
   }) {
-    return _then(_$RefreshPlayListImpl(
-      isEqual: null == isEqual
-          ? _value.isEqual
-          : isEqual // ignore: cast_nullable_to_non_nullable
-              as bool,
+    return _then(_$UpdatePlaylistInfoImpl(
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      key: null == key
+          ? _value.key
+          : key // ignore: cast_nullable_to_non_nullable
+              as int,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$RefreshPlayListImpl implements RefreshPlayList {
-  const _$RefreshPlayListImpl({required this.isEqual});
+class _$UpdatePlaylistInfoImpl implements UpdatePlaylistInfo {
+  const _$UpdatePlaylistInfoImpl(
+      {required this.title, required this.key, required this.url});
 
   @override
-  final bool isEqual;
+  final String title;
+  @override
+  final int key;
+  @override
+  final String url;
 
   @override
   String toString() {
-    return 'PlaylistEvent.refreshPlayList(isEqual: $isEqual)';
+    return 'PlaylistEvent.updatePlaylistInfo(title: $title, key: $key, url: $url)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RefreshPlayListImpl &&
-            (identical(other.isEqual, isEqual) || other.isEqual == isEqual));
+            other is _$UpdatePlaylistInfoImpl &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.url, url) || other.url == url));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isEqual);
+  int get hashCode => Object.hash(runtimeType, title, key, url);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RefreshPlayListImplCopyWith<_$RefreshPlayListImpl> get copyWith =>
-      __$$RefreshPlayListImplCopyWithImpl<_$RefreshPlayListImpl>(
+  _$$UpdatePlaylistInfoImplCopyWith<_$UpdatePlaylistInfoImpl> get copyWith =>
+      __$$UpdatePlaylistInfoImplCopyWithImpl<_$UpdatePlaylistInfoImpl>(
           this, _$identity);
 
   @override
@@ -950,9 +973,10 @@ class _$RefreshPlayListImpl implements RefreshPlayList {
     required TResult Function(int key) removePlayList,
     required TResult Function(PlayMusicModel musicList, int key) updatePlayList,
     required TResult Function(int musicId, int key) deleteMusicPlayList,
-    required TResult Function(bool isEqual) refreshPlayList,
+    required TResult Function(String title, int key, String url)
+        updatePlaylistInfo,
   }) {
-    return refreshPlayList(isEqual);
+    return updatePlaylistInfo(title, key, url);
   }
 
   @override
@@ -963,9 +987,9 @@ class _$RefreshPlayListImpl implements RefreshPlayList {
     TResult? Function(int key)? removePlayList,
     TResult? Function(PlayMusicModel musicList, int key)? updatePlayList,
     TResult? Function(int musicId, int key)? deleteMusicPlayList,
-    TResult? Function(bool isEqual)? refreshPlayList,
+    TResult? Function(String title, int key, String url)? updatePlaylistInfo,
   }) {
-    return refreshPlayList?.call(isEqual);
+    return updatePlaylistInfo?.call(title, key, url);
   }
 
   @override
@@ -976,11 +1000,11 @@ class _$RefreshPlayListImpl implements RefreshPlayList {
     TResult Function(int key)? removePlayList,
     TResult Function(PlayMusicModel musicList, int key)? updatePlayList,
     TResult Function(int musicId, int key)? deleteMusicPlayList,
-    TResult Function(bool isEqual)? refreshPlayList,
+    TResult Function(String title, int key, String url)? updatePlaylistInfo,
     required TResult orElse(),
   }) {
-    if (refreshPlayList != null) {
-      return refreshPlayList(isEqual);
+    if (updatePlaylistInfo != null) {
+      return updatePlaylistInfo(title, key, url);
     }
     return orElse();
   }
@@ -993,9 +1017,9 @@ class _$RefreshPlayListImpl implements RefreshPlayList {
     required TResult Function(RemovePlayList value) removePlayList,
     required TResult Function(UpdatePlayList value) updatePlayList,
     required TResult Function(DeleteMusicPlayList value) deleteMusicPlayList,
-    required TResult Function(RefreshPlayList value) refreshPlayList,
+    required TResult Function(UpdatePlaylistInfo value) updatePlaylistInfo,
   }) {
-    return refreshPlayList(this);
+    return updatePlaylistInfo(this);
   }
 
   @override
@@ -1006,9 +1030,9 @@ class _$RefreshPlayListImpl implements RefreshPlayList {
     TResult? Function(RemovePlayList value)? removePlayList,
     TResult? Function(UpdatePlayList value)? updatePlayList,
     TResult? Function(DeleteMusicPlayList value)? deleteMusicPlayList,
-    TResult? Function(RefreshPlayList value)? refreshPlayList,
+    TResult? Function(UpdatePlaylistInfo value)? updatePlaylistInfo,
   }) {
-    return refreshPlayList?.call(this);
+    return updatePlaylistInfo?.call(this);
   }
 
   @override
@@ -1019,23 +1043,27 @@ class _$RefreshPlayListImpl implements RefreshPlayList {
     TResult Function(RemovePlayList value)? removePlayList,
     TResult Function(UpdatePlayList value)? updatePlayList,
     TResult Function(DeleteMusicPlayList value)? deleteMusicPlayList,
-    TResult Function(RefreshPlayList value)? refreshPlayList,
+    TResult Function(UpdatePlaylistInfo value)? updatePlaylistInfo,
     required TResult orElse(),
   }) {
-    if (refreshPlayList != null) {
-      return refreshPlayList(this);
+    if (updatePlaylistInfo != null) {
+      return updatePlaylistInfo(this);
     }
     return orElse();
   }
 }
 
-abstract class RefreshPlayList implements PlaylistEvent {
-  const factory RefreshPlayList({required final bool isEqual}) =
-      _$RefreshPlayListImpl;
+abstract class UpdatePlaylistInfo implements PlaylistEvent {
+  const factory UpdatePlaylistInfo(
+      {required final String title,
+      required final int key,
+      required final String url}) = _$UpdatePlaylistInfoImpl;
 
-  bool get isEqual;
+  String get title;
+  int get key;
+  String get url;
   @JsonKey(ignore: true)
-  _$$RefreshPlayListImplCopyWith<_$RefreshPlayListImpl> get copyWith =>
+  _$$UpdatePlaylistInfoImplCopyWith<_$UpdatePlaylistInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

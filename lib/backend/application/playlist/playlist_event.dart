@@ -11,6 +11,8 @@ class PlaylistEvent with _$PlaylistEvent {
       {required PlayMusicModel musicList, required int key}) = UpdatePlayList;
   const factory PlaylistEvent.deleteMusicPlayList(
       {required int musicId, required int key}) = DeleteMusicPlayList;
-  const factory PlaylistEvent.refreshPlayList({required bool isEqual}) =
-      RefreshPlayList;
+  const factory PlaylistEvent.updatePlaylistInfo(
+      {required String title,
+      required int key,
+      required String url}) = UpdatePlaylistInfo;
 }
