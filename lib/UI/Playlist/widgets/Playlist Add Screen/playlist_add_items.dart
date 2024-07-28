@@ -3,16 +3,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_player/UI/Playlist/widgets/Playlist%20Add%20Screen/playlist_music_tile.dart';
 import 'package:music_player/backend/application/music_list/music_list_bloc.dart';
 import 'package:music_player/backend/models/player/player_model.dart';
+import 'package:music_player/backend/models/playlist/playlist_model.dart';
 
 class PlayListAddItems extends StatelessWidget {
-  const PlayListAddItems({super.key});
-
+  const PlayListAddItems(
+      {super.key, required this.playIndex, required this.playListKey});
+  final int playIndex;
+  final int playListKey;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MusicListBloc, MusicListState>(
         builder: (context, state) {
-      List<PlayerModel> musicList = state.musicList.map((music) {
-        return PlayerModel(
+      List<PlayMusicModel> musicList = state.musicList.map((music) {
+        return PlayMusicModel(
             id: music.id,
             title: music.displayNameWOExt,
             authour: music.artist,
@@ -31,6 +34,8 @@ class PlayListAddItems extends StatelessWidget {
           : ListView.separated(
               itemBuilder: (context, index) {
                 return PlaylistMusicTile(
+                  playListKey: playListKey,
+                  playIndex: playIndex,
                   id: state.musicList[index].id,
                   title: state.musicList[index].displayNameWOExt,
                   author: state.musicList[index].artist,

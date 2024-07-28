@@ -4,7 +4,14 @@ import 'package:music_player/UI/Playlist/playlist_screen.dart';
 import 'package:music_player/UI/core/constants.dart';
 
 class PlayListCard extends StatelessWidget {
-  const PlayListCard({super.key});
+  const PlayListCard(
+      {super.key,
+      required this.title,
+      required this.count,
+      required this.index});
+  final String title;
+  final int count;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +24,9 @@ class PlayListCard extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) {
-                  return const PlayListScreen();
+                  return PlayListScreen(
+                    index: index,
+                  );
                 },
               ));
             },
@@ -39,12 +48,12 @@ class PlayListCard extends StatelessWidget {
             height: 10,
           ),
           Text(
-            "Paradise",
+            title,
             style: TextStyle(fontSize: 16, color: kPrimaryColor),
           ),
-          const Text(
-            "20 Songs",
-            style: TextStyle(color: Colors.white),
+          Text(
+            '$count',
+            style: const TextStyle(color: Colors.white),
           ),
         ],
       ),

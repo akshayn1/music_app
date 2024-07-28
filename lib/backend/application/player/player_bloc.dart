@@ -4,7 +4,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:music_player/backend/domain/player_service.dart';
 import 'package:music_player/backend/models/player/player_model.dart';
-import 'package:on_audio_query/on_audio_query.dart';
 
 part 'player_event.dart';
 part 'player_state.dart';
@@ -13,6 +12,7 @@ part 'player_bloc.freezed.dart';
 class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
   PlayerBloc() : super(PlayerState.initial()) {
     final playSerivce = PlayerService();
+
     final ValueNotifier<List<PlayerModel>> musics = ValueNotifier([]);
     final ValueNotifier<int> index = ValueNotifier(0);
     playSerivce.audioPlayer.playerStateStream.listen((state) {

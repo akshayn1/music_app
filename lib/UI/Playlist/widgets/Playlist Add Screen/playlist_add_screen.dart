@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:music_player/UI/Playlist/playlist_screen.dart';
 import 'package:music_player/UI/Playlist/widgets/Playlist%20Add%20Screen/playlist_add_items.dart';
+import 'package:music_player/backend/application/playlist/playlist_bloc.dart';
 
 class PlayListAddScreen extends StatelessWidget {
-  const PlayListAddScreen({super.key});
+  const PlayListAddScreen(
+      {super.key,
+      required this.playIndex,
+      required this.playlistname,
+      required this.playListKey});
+
+  final int playIndex;
+  final String playlistname;
+  final int playListKey;
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +30,20 @@ class PlayListAddScreen extends StatelessWidget {
             )),
         automaticallyImplyLeading: false,
         backgroundColor: Colors.black,
-        flexibleSpace: const Center(
+        flexibleSpace: Center(
           child: Text(
-            "Add to Text",
-            style: TextStyle(
+            "Add to $playlistname",
+            style: const TextStyle(
                 color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
           ),
         ),
         actions: [
           TextButton(
             onPressed: () {
-              Navigator.of(context).pop();
+              BlocProvider.of<PlaylistBloc>(context).add(const GetPlayList());
+
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => PlayListScreen(index: playIndex)));
             },
             child: const Text(
               "Done",
@@ -38,9 +52,13 @@ class PlayListAddScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: const SafeArea(
-        child:
-            Padding(padding: EdgeInsets.all(12.0), child: PlayListAddItems()),
+      body: SafeArea(
+        child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: PlayListAddItems(
+              playListKey: playListKey,
+              playIndex: playIndex,
+            )),
       ),
     );
   }

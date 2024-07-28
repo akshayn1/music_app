@@ -1,5 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:music_player/backend/models/fav_model.dart';
+import 'package:music_player/backend/models/favourites/fav_model.dart';
 
 Future<void> addFavMusic(FavSongs song) async {
   final favDb = await Hive.openBox<FavSongs>('favourites_db');

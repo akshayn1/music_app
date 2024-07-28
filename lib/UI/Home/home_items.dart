@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_player/UI/Home/widgets/fav_tiles.dart';
+import 'package:music_player/UI/Home/widgets/playlist_add_widget.dart';
 import 'package:music_player/UI/Home/widgets/playlist_card.dart';
 import 'package:music_player/UI/core/constants.dart';
 import 'package:music_player/backend/application/favourites/favourites_bloc.dart';
+import 'package:music_player/backend/application/playlist/playlist_bloc.dart';
 import 'package:music_player/backend/models/player/player_model.dart';
 
 class HomeItems extends StatelessWidget {
@@ -18,16 +20,48 @@ class HomeItems extends StatelessWidget {
           const SizedBox(
             height: 35,
           ),
-          const Text(
-            "Playlist",
-            style: TextStyle(
-                color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                "Playlist",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600),
+              ),
+              IconButton(
+                  onPressed: () async {
+                    await playListAddSheet(context);
+                  },
+                  icon: const Icon(
+                    Icons.add_circle_outline,
+                    color: Colors.white,
+                    size: 30,
+                  ))
+            ],
           ),
           SizedBox(
             height: 300,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: List.generate(4, (index) => const PlayListCard()),
+            child: BlocBuilder<PlaylistBloc, PlaylistState>(
+              builder: (context, state) {
+                return state.playlist.isNotEmpty
+                    ? ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: List.generate(
+                            state.playlist.length,
+                            (index) => PlayListCard(
+                                index: index,
+                                title: state.playlist[index].playListTitle,
+                                count: state.playlist[index].musicList.length)),
+                      )
+                    : const Center(
+                        child: Text(
+                          "Your playlist will be show here",
+                          style: TextStyle(color: Colors.white, fontSize: 15),
+                        ),
+                      );
+              },
             ),
           ),
           Text(

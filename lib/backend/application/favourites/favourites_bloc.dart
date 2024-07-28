@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:music_player/backend/domain/fav_service.dart';
-import 'package:music_player/backend/models/fav_model.dart';
+import 'package:music_player/backend/models/favourites/fav_model.dart';
 
 part 'favourites_event.dart';
 part 'favourites_state.dart';

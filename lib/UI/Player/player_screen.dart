@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_player/UI/core/constants.dart';
 import 'package:music_player/backend/application/favourites/favourites_bloc.dart';
 import 'package:music_player/backend/application/player/player_bloc.dart';
-import 'package:music_player/backend/models/fav_model.dart';
+import 'package:music_player/backend/models/favourites/fav_model.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class PlayerScreen extends StatelessWidget {
@@ -240,7 +240,7 @@ class PlayerScreen extends StatelessWidget {
                                   Color.fromARGB(255, 31, 31, 31))),
                           onPressed: () {},
                           icon: const Icon(
-                            Icons.share_outlined,
+                            Icons.playlist_add,
                             color: Colors.white,
                           )),
                     ],
