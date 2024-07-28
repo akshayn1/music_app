@@ -78,7 +78,7 @@ class PlaylistTile extends StatelessWidget {
                                       overflow: TextOverflow.ellipsis,
                                       musicList.title,
                                       style: const TextStyle(
-                                          fontSize: 19,
+                                          fontSize: 14,
                                           color: Colors.white,
                                           fontWeight: FontWeight.w700),
                                     ),

@@ -62,7 +62,7 @@ class MusicTile extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       title,
                       style: const TextStyle(
-                          fontSize: 19,
+                          fontSize: 14,
                           color: Colors.white,
                           fontWeight: FontWeight.w700),
                     ),

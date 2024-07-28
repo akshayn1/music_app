@@ -44,7 +44,7 @@ class FavTiles extends StatelessWidget {
               title,
               style: TextStyle(
                   color: kPrimaryColor,
-                  fontSize: 19,
+                  fontSize: 14,
                   fontWeight: FontWeight.w600),
             ),
             subtitle: Text(

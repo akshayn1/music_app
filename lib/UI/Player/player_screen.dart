@@ -78,7 +78,7 @@ class PlayerScreen extends StatelessWidget {
                       : state.musicList[index].title,
                   style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 30,
+                      fontSize: 25,
                       fontWeight: FontWeight.w500),
                 ),
                 Text(
