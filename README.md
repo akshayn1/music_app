@@ -33,10 +33,6 @@ flutter run
 
 ---
 
-## 📸 Screenshots
-_(Add relevant screenshots of the app here)_
-
----
 
 ## 📝 How It Works
 1️⃣ Load songs from device storage.  
