@@ -23,7 +23,7 @@ A **Flutter-based** music player app with a sleek UI and smooth performance. Bui
 
 ## 📥 Installation
 ```sh
-git clone https://github.com/your-username/flutter-music-player.git
+git clone https://github.com/akshayn1/music_app.git
 cd flutter-music-player
 flutter pub get
 flutter run
