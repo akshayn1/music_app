@@ -10,9 +10,7 @@ A **Flutter-based** music player app with a sleek UI and smooth performance. Bui
 ✅ Background playback support  
 ✅ Playlist and queue management  
 ✅ Optimized UI updates for performance  
-✅ Dark and light mode support  
 
----
 
 ## 🛠️ Tech Stack
 🚀 **Flutter** (Frontend)  
@@ -49,7 +47,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ---
 
 ## 📧 Contact
-For any questions or issues, feel free to reach out via **GitHub Issues** or email me at 📩 **your-email@example.com**.
+For any questions or issues, feel free to reach out via **GitHub Issues** or email me at 📩 **aknlabs10l@gmail.com**.
 
 ---
 
